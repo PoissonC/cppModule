@@ -3,17 +3,17 @@ CC 			= clang++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = phonebook.cpp main.cpp contact.cpp
+SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
 
-NAME = phonebook
+NAME = megaphone
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp phonebook.hpp
+%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files
