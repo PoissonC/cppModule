@@ -1,20 +1,20 @@
-#include <stdio.h>
-#include <ctype.h>
+#include <iostream>
+#include <cctype>
 
 int main(int argc, char **argv) {
 
 	if (argc > 1){
 		for (int i = 1; i < argc; i++) {
 			for (int j = 0; argv[i][j]; j++) {
-				argv[i][j] = toupper(argv[i][j]);
+				argv[i][j] = std::toupper(argv[i][j]);
 			}
-			printf("%s", argv[i]);
+			std::cout << argv[i];
 			if (i + 1 != argc)
-				printf(" ");
+				std::cout << " ";
 		}
 	}
 	else {
-		printf("* LOUD AND UNBEARABLE FEEDBACK NOISE *");
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	}
-	printf("\n");
+	std::cout << std::endl;
 }

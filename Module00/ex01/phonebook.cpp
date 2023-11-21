@@ -6,39 +6,31 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:55:00 by ychen2            #+#    #+#             */
-/*   Updated: 2023/11/21 13:37:07 by ychen2           ###   ########.fr       */
+/*   Updated: 2023/11/21 16:11:49 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-char*	PhoneBook::getPhoneNumber(int n) {
-	if (n >= 8)
-		return (NULL);
-	return (this->contacts[n].getNumber());
-}
-
-char*	PhoneBook::getPhoneName(int n) {
-	if (n >= 8)
-		return (NULL);
-	return (this->contacts[n].getName());
-}
-
-
-void	PhoneBook::newContact() {
+void	PhoneBook::NewContact() {
 	if (this->next < 8) {
-		if (this->contacts[this->next].getName() || this->contacts[this->next].getNumber())
-			this->contacts[this->next].deleteOne();
-		this->contacts[this->next].inputName();
-		if (this->contacts[this->next].getName()) {
-			this->contacts[this->next].inputNumber();
+		if (this->contacts[this->next].InputInfo()) {
 			this->next++;
 		}
 	}
 	else {
 		next = 0;
-		PhoneBook::newContact();
+		PhoneBook::NewContact();
 	}
+}
+
+void	PhoneBook::PrintContact(int n) {
+	std::cout << std::setw(10) << std::to_string(n) + "|";
+	this->contacts[n].Print();
+}
+
+int		PhoneBook::IsAvailable(int n) {
+	return (contacts[n].IsAvailable());
 }
 
 PhoneBook::PhoneBook() {
