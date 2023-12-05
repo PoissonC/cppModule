@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:54:55 by ychen2            #+#    #+#             */
-/*   Updated: 2023/11/21 16:33:08 by ychen2           ###   ########.fr       */
+/*   Updated: 2023/12/04 22:02:35 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 int main() {
 	PhoneBook	pb;
@@ -24,20 +24,21 @@ int main() {
 		if (!(std::cin >> cmd)) {
 			break ;
 		}
-		if (std::strcmp("ADD", cmd.c_str()) == 0) {
+		if (cmd == "ADD") {
 			pb.NewContact();
 		}
-		else if (std::strcmp("SEARCH", cmd.c_str()) == 0) {
-			scanf("%8d", &num);
+		else if (cmd == "SEARCH") {
+			std::cin >> num;
+			std::cin.clear();
 			if (num > 7 || num < 0)
-				printf("No contacts found.\n");
+				std::cout << "No contacts found.\n";
 			else if (pb.IsAvailable(num)) {
 				pb.PrintContact(num);
 			}
 			else
-				printf("No contacts found.\n");
+				std::cout << "No contacts found.\n";
 		}
-		else if (std::strcmp("EXIT", cmd.c_str()) == 0) {
+		else if (cmd == "EXIT") {
 			break ;
 		}
 	}

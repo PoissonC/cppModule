@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 17:58:06 by ychen2            #+#    #+#             */
-/*   Updated: 2023/11/21 16:35:10 by ychen2           ###   ########.fr       */
+/*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
+/*   Updated: 2023/12/04 21:51:28 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-#include <stdio.h>
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 #include <iostream>
 #include <iomanip>
-#include <string>
 #include <cctype>
 
 class	Contact{
@@ -31,17 +30,6 @@ class	Contact{
 		std::string	number;
 		std::string	darkest_secret;
 		int		available;
-};
-
-class	PhoneBook{
-	public:
-		PhoneBook();
-		void	PrintContact(int n);
-		void	NewContact();
-		int		IsAvailable(int n);
-	private:
-		Contact contacts[8];
-		int		next;
 };
 
 #endif

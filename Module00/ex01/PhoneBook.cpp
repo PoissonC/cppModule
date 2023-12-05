@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 17:55:00 by ychen2            #+#    #+#             */
-/*   Updated: 2023/11/21 16:11:49 by ychen2           ###   ########.fr       */
+/*   Updated: 2023/12/04 20:48:48 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
 void	PhoneBook::NewContact() {
 	if (this->next < 8) {
@@ -25,7 +25,7 @@ void	PhoneBook::NewContact() {
 }
 
 void	PhoneBook::PrintContact(int n) {
-	std::cout << std::setw(10) << std::to_string(n) + "|";
+	std::cout << std::setw(10) << n << "|";
 	this->contacts[n].Print();
 }
 

@@ -3,17 +3,17 @@ CC 			= clang++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = PhoneBook.cpp main.cpp Contact.cpp
+SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 
-NAME = phonebook
+NAME = fixed-point
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp PhoneBook.hpp Contact.hpp
+%.o: %.cpp Fixed.hpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files
