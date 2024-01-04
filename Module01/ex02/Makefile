@@ -3,17 +3,17 @@ CC 			= clang++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 
-NAME = zombie
+NAME = brain
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Zombie.hpp
+%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files
