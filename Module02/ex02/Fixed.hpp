@@ -6,7 +6,7 @@
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 23:24:35 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/05 23:28:00 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,3 @@ Fixed			operator+(const Fixed& a, const Fixed& b);
 Fixed			operator-(const Fixed& a, const Fixed& b);
 Fixed			operator*(const Fixed& a, const Fixed& b);
 Fixed			operator/(const Fixed& a, const Fixed& b);
-
-
-#endif
