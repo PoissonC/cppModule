@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 00:05:27 by yu               ###   ########.fr       */
+/*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
+/*   Updated: 2024/01/06 00:34:48 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "ClapTrap.hpp"
 
-int main( void ) {
-	ClapTrap a("Herooooo");
+class	ScavTrap : public ClapTrap{
+	public:
+		// constructor & destructor
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& other);
+		ScavTrap& operator=(const ScavTrap& other);
+		~ScavTrap();
 
-	a.attack("Enemy");
-	a.takeDamage(5);
-	a.beRepaired(10);
-	a.takeDamage(20);
-	a.beRepaired(5);
-	a.takeDamage(20);
-	a.attack("Enemy");
-
-	return 0;
-}
+		// member functions
+		void	guardGate(void);
+};

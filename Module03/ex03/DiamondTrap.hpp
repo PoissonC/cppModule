@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 01:14:22 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/06 00:34:48 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string>
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-class	ClapTrap{
+class	DiamondTrap : public FragTrap, public ScavTrap {
 	public:
 		// constructor & destructor
-		ClapTrap(std::string name);
-		ClapTrap(const ClapTrap& other);
-		ClapTrap& operator=(const ClapTrap& other);
-		~ClapTrap();
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap& other);
+		DiamondTrap& operator=(const DiamondTrap& other);
+		~DiamondTrap();
 
 		// member functions
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
-	protected:
-		//setters
-		void	setName(std::string name);
-		void	setHp(int hp);
-		void	setEp(int ep);
-		void	setAd(int ad);
-		//getters
-		std::string	getName(void) const;
-		int			getHp(void) const;
-		int			getEp(void) const;
-		int			getAd(void) const;
+		void	whoAmI();
 	private:
 		std::string	_name;
-		int			_hitPoints;
-		int			_energyPoints;
-		int			_attackDamage;
 };
