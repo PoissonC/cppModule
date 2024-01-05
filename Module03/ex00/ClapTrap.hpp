@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 23:25:01 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 23:25:03 by yu               ###   ########.fr       */
+/*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
+/*   Updated: 2024/01/05 23:24:27 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <string>
 
-class Harl {
-	private:
-		void debug(void);
-		void info(void);
-		void warning(void);
-		void error(void);
-	
-		// A structure to map strings to member function pointers
-		struct Complaint {
-			std::string level;
-			void (Harl::*method)();
-		};
-
+class	Fixed{
 	public:
-		void	complain(std::string level);
+		Fixed();
+		Fixed(const Fixed& other);
+		Fixed& operator=(const Fixed& other);
+		~Fixed();
+		int getRawBits( void ) const;
+		void setRawBits( int const raw );
+
+	private:
+		int					fp_value;
+		static const int	fp_bits = 8;
 };
 
-
+#endif

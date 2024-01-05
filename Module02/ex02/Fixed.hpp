@@ -6,12 +6,11 @@
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 21:49:54 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/05 23:24:35 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#pragma once
 
 #include <iostream>
 #include <cmath>
