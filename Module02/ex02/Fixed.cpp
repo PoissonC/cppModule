@@ -6,7 +6,7 @@
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 16:06:12 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/05 22:06:13 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,94 @@ int	Fixed::toInt( void ) const {
 	return this->fp_value >> this->fp_bits;
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj) {
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return (a > b) ? a : b;
+}
+
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) {
+	return (a > b) ? a : b;
+}
+
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	return (a < b) ? a : b;
+}
+
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
+	return (a < b) ? a : b;
+}
+
+
+// operator overloading
+
+std::ostream&	operator<<(std::ostream& os, const Fixed& obj) {
 	os << obj.toFloat();
 	return os;
+}
+
+bool	operator>(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() > b.getRawBits();
+}
+
+bool	operator<(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() < b.getRawBits();
+}
+
+bool	operator>=(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() >= b.getRawBits();
+}
+
+bool	operator<=(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() <= b.getRawBits();
+}
+
+bool	operator==(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() == b.getRawBits();
+}
+
+bool	operator!=(const Fixed& a, const Fixed& b) {
+	return a.getRawBits() != b.getRawBits();
+}
+
+// 4 arithmetic operators overload
+
+// use float to +-*/
+Fixed	operator+(const Fixed& a, const Fixed& b) {
+	return Fixed(a.toFloat() + b.toFloat());
+}
+
+Fixed	operator-(const Fixed& a, const Fixed& b) {
+	return Fixed(a.toFloat() - b.toFloat());
+}
+
+Fixed	operator*(const Fixed& a, const Fixed& b) {
+	return Fixed(a.toFloat() * b.toFloat());
+}
+
+Fixed	operator/(const Fixed& a, const Fixed& b) {
+	return Fixed(a.toFloat() / b.toFloat());
+}
+
+
+// 4 increment/decrement operators overloading
+
+Fixed&	Fixed::operator++() {
+	this->fp_value++;
+	return *this;
+}
+
+Fixed&	Fixed::operator--() {
+	this->fp_value--;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int) {
+	Fixed tmp(*this);
+	operator++();
+	return tmp;
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed tmp(*this);
+	operator--();
+	return tmp;
 }
