@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 02:24:10 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/06 20:44:44 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,18 @@ ScavTrap::~ScavTrap() {
 
 void	ScavTrap::guardGate(void) {
 	std::cout << "ScavTrap " << this->getName() << " has enterred in Gate keeper mode.\n";
+}
+
+void	ScavTrap::attack(const std::string& target) {
+	if (this->getHp() == 0) {
+		std::cout << "ScavTrap " << this->getName() << " is already broken.\n";
+		return ;
+	}
+	if (this->getEp() == 0) {
+		std::cout << "ScavTrap " << this->getName() << " has no energy to attack.\n";
+		return ;
+	}
+	std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAd() << " points of damage!\n";
+	this->setEp(this->getEp() - 1);
+	std::cout << "ScavTrap " << this->getName() << " remains " << this->getEp() << "  EP.\n";
 }

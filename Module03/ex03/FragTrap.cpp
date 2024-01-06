@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 02:23:47 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/06 20:49:54 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ FragTrap::~FragTrap() {
 // member functions
 void	FragTrap::highFivesGuys(void) {
 	std::cout << "FragTrap " << this->getName() << " is asking for high fives.\n";
+}
+
+void	FragTrap::attack(const std::string& target) {
+	if (this->getHp() == 0) {
+		std::cout << "FragTrap " << this->getName() << " is already broken.\n";
+		return ;
+	}
+	if (this->getEp() == 0) {
+		std::cout << "FragTrap " << this->getName() << " has no energy to attack.\n";
+		return ;
+	}
+	std::cout << "FragTrap " << this->getName() << " attacks " << target << ", causing " << this->getAd() << " points of damage!\n";
+	this->setEp(this->getEp() - 1);
+	std::cout << "FragTrap " << this->getName() << " remains " << this->getEp() << "  EP.\n";
 }

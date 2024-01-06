@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 01:55:18 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/06 21:10:12 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ClapTrap.hpp"
 
-class	FragTrap : public ClapTrap{
+class	FragTrap : virtual public ClapTrap{
 	public:
 		// constructor & destructor
 		FragTrap(std::string name);
@@ -24,4 +24,5 @@ class	FragTrap : public ClapTrap{
 
 		// member functions
 		void	highFivesGuys(void);
+		void	attack(const std::string& target);
 };
