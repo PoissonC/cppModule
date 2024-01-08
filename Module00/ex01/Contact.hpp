@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2023/12/04 21:51:28 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/08 15:27:47 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class	Contact{
 	public:
 		Contact();
 		int		InputInfo();
-		void	Print();
+		void	PrintSimple();
+		void	PrintAll();
 		int		IsAvailable();
 	private:
 		std::string	first_name;
@@ -31,5 +32,7 @@ class	Contact{
 		std::string	darkest_secret;
 		int		available;
 };
+
+int	IsInputEmpty(std::string in);
 
 #endif
