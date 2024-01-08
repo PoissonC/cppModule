@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 18:09:22 by ychen2            #+#    #+#             */
-/*   Updated: 2024/01/08 15:27:42 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/08 21:59:08 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	Print(std::string prt) {
 		prt = prt.substr(0, 9);
 		prt += ".";
 	}
-	std::cout << std::setw(10) << prt + "|";
+	std::cout << std::setw(11) << prt + "|";
 }
 
 void	Contact::PrintSimple() {
