@@ -5,6 +5,7 @@ CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 #Sources and objects
 SRC = ClapTrap.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
+HDR = ClapTrap.hpp
 
 NAME = ClapTrap
 
@@ -13,7 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp ClapTrap.hpp
+%.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files

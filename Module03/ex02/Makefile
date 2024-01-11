@@ -5,6 +5,7 @@ CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 #Sources and objects
 SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
+HDR = ScavTrap.hpp FragTrap.hpp ClapTrap.hpp
 
 NAME = FragTrap
 
@@ -13,7 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp ScavTrap.hpp FragTrap.hpp ClapTrap.hpp
+%.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files

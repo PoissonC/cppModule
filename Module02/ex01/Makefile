@@ -5,6 +5,7 @@ CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 #Sources and objects
 SRC = Fixed.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
+HDR = Fixed.hpp
 
 NAME = fixed-point
 
@@ -13,7 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp Fixed.hpp
+%.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files
