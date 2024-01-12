@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:25:19 by yu                #+#    #+#             */
-/*   Updated: 2024/01/12 12:19:57 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:28:05 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char* argv[]) {
 	// 
 	std::string line;
 	while (std::getline(inFile, line)) {
-		outFile << replaceAllOccurrences(line, s1, s2) << "\n";
+		outFile << replaceAllOccurrences(line, s1, s2) << std::endl;
 	}
 
 	inFile.close();
