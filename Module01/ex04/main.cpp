@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:25:19 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 23:25:21 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/12 11:36:03 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include <string>
 
 void replaceAllOccurrences(std::string& source, const std::string& from, const std::string& to) {
-    size_t startPos = 0;
+	size_t startPos = 0;
 
 	startPos = source.find(from, startPos);
-    while (startPos != std::string::npos) {
-        source.replace(startPos, from.length(), to);
-        startPos += to.length();
+	while (startPos != std::string::npos) {
+		source.replace(startPos, from.length(), to);
+		startPos += to.length();
 		startPos = source.find(from, startPos);
-    }
+	}
 }
 
 int main(int argc, char* argv[]) {
@@ -39,10 +39,10 @@ int main(int argc, char* argv[]) {
 
 	// check if file exists
 	std::ifstream inFile(filename);
-    if (!inFile) {
-        std::cerr << "Cannot open file: " << filename << std::endl;
-        return 1;
-    }
+	if (!inFile) {
+		std::cerr << "Cannot open file: " << filename << std::endl;
+		return 1;
+	}
 
 	// check if s1 is empty
 	if (s1.empty()) {
