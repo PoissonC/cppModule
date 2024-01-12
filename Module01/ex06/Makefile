@@ -7,7 +7,7 @@ SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
 HDR = Harl.hpp
 
-NAME = harl
+NAME = harlFilter
 
 all: $(NAME)
 
