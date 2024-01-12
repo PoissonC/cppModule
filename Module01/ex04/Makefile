@@ -5,7 +5,6 @@ CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 #Sources and objects
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
-HDR = Weapon.hpp HumanA.hpp HumanB.hpp 
 
 NAME = sed
 
@@ -14,7 +13,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.cpp $(HDR)
+%.o: %.cpp
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 # Clean up object files
