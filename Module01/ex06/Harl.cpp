@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:25:07 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 23:25:09 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/12 13:03:09 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,29 @@ void Harl::complain(std::string level) {
 	// Loop through the array of Complaints
 	for (int i = 0; i < 4; i++) {
 		if (complaints[i].level == level) {
-			(this->*(complaints[i].method))();
+			switch (i)
+			{
+			case 0:
+				std::cout << "[ DEBUG ]" << std::endl;
+				debug();
+				std::cout << std::endl;
+			case 1:
+				std::cout << "[ INFO ]" << std::endl;
+				info();
+				std::cout << std::endl;
+			case 2:
+				std::cout << "[ WARNING ]" << std::endl;
+				warning();
+				std::cout << std::endl;
+			case 3:
+				std::cout << "[ ERROR ]" << std::endl;
+				error();
+				std::cout << std::endl;
+			default:
+				break;
+			}
 			return ;
 		}
 	}
-	std::cout << "Unknown complaint level: " << level << std::endl;
+	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }

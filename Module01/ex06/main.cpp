@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:25:11 by yu                #+#    #+#             */
-/*   Updated: 2024/01/12 12:47:03 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:52:04 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,6 @@ int main(int ac, char **av) {
 		return 1;
 	}
 	std::string level = av[1];
-	switch (level)
-	{
-	case /* constant-expression */:
-		/* code */
-		break;
-	
-	default:
-		break;
-	}
-    harl.complain("DEBUG");
-    harl.complain("INFO");
-    harl.complain("WARNING");
-    harl.complain("ERROR");
-    harl.complain("UNKNOWN");
-
+    harl.complain(level);
     return 0;
 }
