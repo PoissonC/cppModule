@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/12 14:51:46 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/12 14:55:46 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,9 @@ int main( void ) {
 	std::cout << "a = " << a << std::endl;
 	a = a / 2;
 	std::cout << "a = " << a << std::endl;
+	if (a > b)
+		std::cout << "a > b" << std::endl;
+	if (a < b)
+		std::cout << "a < b" << std::endl;
 	return 0;
 }
