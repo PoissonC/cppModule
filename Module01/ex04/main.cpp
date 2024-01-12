@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 23:25:19 by yu                #+#    #+#             */
-/*   Updated: 2024/01/12 11:36:03 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/12 12:19:57 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 #include <fstream>
 #include <string>
 
-void replaceAllOccurrences(std::string& source, const std::string& from, const std::string& to) {
-	size_t startPos = 0;
+std::string	replaceAllOccurrences(const std::string &source, const std::string &from, const std::string &to) {
+	size_t		startPos = 0;
+	size_t		lastPos = 0;
+	std::string	ret = "";
 
 	startPos = source.find(from, startPos);
 	while (startPos != std::string::npos) {
-		source.replace(startPos, from.length(), to);
-		startPos += to.length();
+		ret += source.substr(lastPos, startPos - lastPos);
+		ret += to;
+		startPos += from.length();
+		lastPos = startPos;
 		startPos = source.find(from, startPos);
 	}
+	ret += source.substr(lastPos, startPos - lastPos);
+	return ret;
 }
 
-int main(int argc, char* argv[]) {
+int	main(int argc, char* argv[]) {
 	//check arguments number
 	if (argc != 4) {
 		std::cout << "Wrong number of arguments." << std::endl;
@@ -67,8 +73,7 @@ int main(int argc, char* argv[]) {
 	// 
 	std::string line;
 	while (std::getline(inFile, line)) {
-		replaceAllOccurrences(line, s1, s2);
-		outFile << line << "\n";
+		outFile << replaceAllOccurrences(line, s1, s2) << "\n";
 	}
 
 	inFile.close();
