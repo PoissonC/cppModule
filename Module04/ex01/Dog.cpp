@@ -25,7 +25,7 @@ Dog::Dog(const Dog& other) {
 
 Dog&	Dog::operator=(const Dog& other) {
 	std::cout << "Copy assignment of Dog operator called" << std::endl;
-	_brain = new Brain;
+	_brain = new Brain; // without this line, it would be shallow copy and cause double free issue
 	if (this != &other)
 		Animal::type = other.type;
 	for (int i = 0; i < 100; i++)
