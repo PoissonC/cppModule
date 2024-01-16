@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/16 18:18:01 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/16 18:44:35 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int	Fixed::getRawBits( void ) const {
 }
 
 void Fixed::setRawBits( int const raw ) {
+	std::cout << "setRawBits member function called" << std::endl;
 	this->fp_value = raw;
 }
