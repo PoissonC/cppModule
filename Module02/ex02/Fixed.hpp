@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 23:28:00 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/16 18:16:26 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class	Fixed{
 		static const Fixed&	max(const Fixed& a, const Fixed& b);
 		static const Fixed&	min(const Fixed& a, const Fixed& b);
 
-		
+
 	private:
 		int					fp_value;
 		static const int	fp_bits = 8;

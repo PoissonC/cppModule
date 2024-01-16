@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/05 22:06:13 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/16 18:18:07 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,8 @@ Fixed	Fixed::operator--(int) {
 	Fixed tmp(*this);
 	operator--();
 	return tmp;
+}
+
+void Fixed::setRawBits( int const raw ) {
+	this->fp_value = raw;
 }
