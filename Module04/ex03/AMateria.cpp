@@ -34,8 +34,3 @@ AMateria::~AMateria() {
 std::string	AMateria::getType( void ) const {
 	return (type);
 }
-
-
-void	AMateria::makeSound() const {
-	std::cout << "AMateria sound?" << std::endl;
-}
