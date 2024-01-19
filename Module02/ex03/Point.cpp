@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/19 21:10:45 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/19 21:16:48 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,17 @@ Point::Point(const Point& other) : _x(other._x), _y(other._y) {
 	std::cout << "Copy constructor of Point called" << std::endl;
 }
 
-static void	m_swap(void **a, void **b) {
-	void	*tmp;
+static void m_swap(Point& a, Point& b) {
+    Point	tmp;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	tmp = a;
+    a = b;
+    b = tmp;
 }
 
 Point&	Point::operator=(Point other) {
 	std::cout << "Copy assignment operator of Point called" << std::endl;
-	m_swap(&this->_x, &other._x);
-	m_swap(&this->_y, &other._y);
+	m_swap(*this, other);
 	return *this;
 }
 
