@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/21 14:17:13 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/21 15:30:46 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ class	Point{
 		// constructor & destructor
 		Point();
 		Point(Fixed x, Fixed y);
+		Point(const float x, const float y);
 		Point(const Point& other);
 		~Point();
 		Point&	operator=(Point other);

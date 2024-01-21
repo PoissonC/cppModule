@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/21 14:17:22 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/21 15:31:41 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ Point::Point() : _x(0), _y(0) {
 }
 
 Point::Point(Fixed x, Fixed y) : _x(x), _y(y) {
-	std::cout << "Default constructor with arguments of Point called" << std::endl;
+	std::cout << "Default constructor with Fixed arguments of Point called" << std::endl;
 }
+
+Point::Point(const float x, const float y) : _x(x), _y(y){
+	std::cout << "Default constructor with float arguments of Point called" << std::endl;
+}
+
 
 Point::Point(const Point& other) : _x(other._x), _y(other._y) {
 	std::cout << "Copy constructor of Point called" << std::endl;
