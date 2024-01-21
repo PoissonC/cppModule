@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/19 21:16:48 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/21 14:17:22 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,12 @@ Point&	Point::operator=(Point other) {
 
 Point::~Point() {
 	std::cout << "Destructor of Point called" << std::endl;
+}
+
+Fixed	Point::getX() const {
+	return (_x);
+}
+
+Fixed	Point::getY() const {
+	return (_y);
 }

@@ -3,11 +3,11 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = Fixed.cpp Point.cpp main.cpp
+SRC = Fixed.cpp Point.cpp bsp.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HDR = Fixed.hpp Point.hpp
 
-NAME = fixed-point
+NAME = bsp
 
 all: $(NAME)
 

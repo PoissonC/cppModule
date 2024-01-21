@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/19 21:17:13 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/21 14:17:13 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class	Point{
 		~Point();
 		Point&	operator=(Point other);
 
+		//getter
+		Fixed	getX() const;
+		Fixed	getY() const;
 	private:
 		const Fixed	_x;
 		const Fixed	_y;
