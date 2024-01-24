@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 20:41:28 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:46:02 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ScavTrap::~ScavTrap() {
 // member functions
 
 void	ScavTrap::guardGate(void) {
-	std::cout << "ScavTrap " << this->_name << " has enterred in Gate keeper mode.\n";
+	std::cout << "\033[34mScavTrap " << this->_name << " has enterred in Gate keeper mode.\n\033[0m";
 }
 
 void	ScavTrap::attack(const std::string& target) {
