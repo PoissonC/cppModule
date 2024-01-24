@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 20:44:44 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:41:28 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // constructor & destructor
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	std::cout << "Default constructor of ScavTrap called" << std::endl;
-	this->setHp(100);
-	this->setEp(50);
-	this->setAd(20);
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other){
@@ -28,10 +28,10 @@ ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other){
 ScavTrap&	ScavTrap::operator=(const ScavTrap& other) {
 	std::cout << "Copy assignment operator of ScavTrap called" << std::endl;
 	if (this != &other) {
-		this->setName(other.getName());
-		this->setHp(other.getHp());
-		this->setEp(other.getEp());
-		this->setAd(other.getAd());
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackDamage = other._attackDamage;
 	}
 	return *this;
 }
@@ -43,19 +43,19 @@ ScavTrap::~ScavTrap() {
 // member functions
 
 void	ScavTrap::guardGate(void) {
-	std::cout << "ScavTrap " << this->getName() << " has enterred in Gate keeper mode.\n";
+	std::cout << "ScavTrap " << this->_name << " has enterred in Gate keeper mode.\n";
 }
 
 void	ScavTrap::attack(const std::string& target) {
-	if (this->getHp() == 0) {
-		std::cout << "ScavTrap " << this->getName() << " is already broken.\n";
+	if (this->_hitPoints == 0) {
+		std::cout << "\033[31mScavTrap " << this->_name << " is already broken.\n\033[0m";
 		return ;
 	}
-	if (this->getEp() == 0) {
-		std::cout << "ScavTrap " << this->getName() << " has no energy to attack.\n";
+	if (this->_energyPoints == 0) {
+		std::cout << "\033[31mScavTrap " << this->_name << " has no energy to attack.\n\033[0m";
 		return ;
 	}
-	std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAd() << " points of damage!\n";
-	this->setEp(this->getEp() - 1);
-	std::cout << "ScavTrap " << this->getName() << " remains " << this->getEp() << "  EP.\n";
+	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!\n";
+	this->_energyPoints--;
+	std::cout << "ScavTrap " << this->_name << " remains " << this->_energyPoints << "  EP.\n";
 }
