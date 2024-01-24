@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 20:45:12 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:00:44 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ class	ScavTrap : virtual public ClapTrap{
 		// member functions
 		void	guardGate(void);
 		void	attack(const std::string& target);
-
 };

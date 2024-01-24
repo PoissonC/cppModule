@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 20:52:09 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:04:57 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,11 @@ FragTrap::~FragTrap() {
 // member functions
 
 void	FragTrap::highFivesGuys(void) {
-	std::cout << "\033[33mFragTrap " << this->_name << "is asking for a fives.\n\033[0m";
+	if (this->_hitPoints == 0) {
+		std::cout << "\033[33mFragTrap " << this->_name << " is already broken, can't ask for a high fives.\n\033[0m";
+		return ;
+	}
+	std::cout << "\033[33mFragTrap " << this->_name << " is asking for a high fives.\n\033[0m";
 }
 
 void	FragTrap::attack(const std::string& target) {
