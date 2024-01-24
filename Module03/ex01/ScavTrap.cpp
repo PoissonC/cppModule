@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 20:54:41 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:09:44 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 // constructor & destructor
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-	std::cout << "Default constructor of ScavTrap called" << std::endl;
+	std::cout << "\033[34mDefault constructor of ScavTrap called\033[0m" << std::endl;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_attackDamage = 20;
+	// std::cout << "Hp: " << this->_hitPoints << std::endl;
+	// std::cout << "Ep: " << this->_energyPoints << std::endl;
+	// std::cout << "Ad: " << this->_attackDamage << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other){
-	std::cout << "Copy constructor of ScavTrap called" << std::endl;
+	std::cout << "\033[34mCopy constructor of ScavTrap called\033[0m" << std::endl;
 	*this = other;
 }
 
 ScavTrap&	ScavTrap::operator=(const ScavTrap& other) {
-	std::cout << "Copy assignment operator of ScavTrap called" << std::endl;
+	std::cout << "\033[34mCopy assignment operator of ScavTrap called\033[0m" << std::endl;
 	if (this != &other) {
 		this->_name = other._name;
 		this->_hitPoints = other._hitPoints;
@@ -37,7 +40,7 @@ ScavTrap&	ScavTrap::operator=(const ScavTrap& other) {
 }
 
 ScavTrap::~ScavTrap() {
-	std::cout << "Destructor of ScavTrap called" << std::endl;
+	std::cout << "\033[34mDestructor of ScavTrap called\033[0m" << std::endl;
 }
 
 // member functions

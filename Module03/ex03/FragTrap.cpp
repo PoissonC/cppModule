@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 21:04:51 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:10:11 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 // constructor & destructor
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-	std::cout << "Default constructor of FragTrap called" << std::endl;
+	std::cout << "\033[33mDefault constructor of FragTrap called\033[0m" << std::endl;
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
+	// std::cout << "Hp: " << this->_hitPoints << std::endl;
+	// std::cout << "Ep: " << this->_energyPoints << std::endl;
+	// std::cout << "Ad: " << this->_attackDamage << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other){
-	std::cout << "Copy constructor of FragTrap called" << std::endl;
+	std::cout << "\033[33mCopy constructor of FragTrap called\033[0m" << std::endl;
 	*this = other;
 }
 
 FragTrap&	FragTrap::operator=(const FragTrap& other) {
-	std::cout << "Copy assignment operator of FragTrap called" << std::endl;
+	std::cout << "\033[33mCopy assignment operator of FragTrap called\033[0m" << std::endl;
 	if (this != &other) {
 		this->_name = other._name;
 		this->_hitPoints = other._hitPoints;
@@ -37,7 +40,7 @@ FragTrap&	FragTrap::operator=(const FragTrap& other) {
 }
 
 FragTrap::~FragTrap() {
-	std::cout << "Destructor of FragTrap called" << std::endl;
+	std::cout << "\033[33mDestructor of FragTrap called\033[0m" << std::endl;
 }
 
 // member functions

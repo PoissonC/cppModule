@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 17:55:10 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:14:09 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int main( void ) {
 	d.whoAmI();
 	d.takeDamage(1000);
 	d.attack("Enemy");
+	d.highFivesGuys();
+	d.guardGate();
+	d.whoAmI();
 
 	return 0;
 }
