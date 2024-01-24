@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 20:49:05 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:50:26 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	FragTrap::attack(const std::string& target) {
 		std::cout << "\033[31mFragTrap " << this->_name << " has no energy to attack.\n\033[0m";
 		return ;
 	}
-	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!\n";
+	std::cout << "\033[33mFragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!\n";
 	this->_energyPoints--;
-	std::cout << "FragTrap " << this->_name << " remains " << this->_energyPoints << "  EP.\n";
+	std::cout << "FragTrap " << this->_name << " remains " << this->_energyPoints << "  EP.\n\033[0m";
 }
