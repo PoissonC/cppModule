@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 20:49:54 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 20:47:01 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // constructor & destructor
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	std::cout << "Default constructor of FragTrap called" << std::endl;
-	this->setHp(100);
-	this->setEp(100);
-	this->setAd(30);
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
 }
 
 FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other){
@@ -28,10 +28,10 @@ FragTrap::FragTrap(const FragTrap& other) : ClapTrap(other){
 FragTrap&	FragTrap::operator=(const FragTrap& other) {
 	std::cout << "Copy assignment operator of FragTrap called" << std::endl;
 	if (this != &other) {
-		this->setName(other.getName());
-		this->setHp(other.getHp());
-		this->setEp(other.getEp());
-		this->setAd(other.getAd());
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackDamage = other._attackDamage;
 	}
 	return *this;
 }
@@ -41,20 +41,21 @@ FragTrap::~FragTrap() {
 }
 
 // member functions
+
 void	FragTrap::highFivesGuys(void) {
-	std::cout << "FragTrap " << this->getName() << " is asking for high fives.\n";
+	std::cout << "\033[33mFragTrap " << this->_name << "is asking for a fives.\n\033[0m";
 }
 
 void	FragTrap::attack(const std::string& target) {
-	if (this->getHp() == 0) {
-		std::cout << "FragTrap " << this->getName() << " is already broken.\n";
+	if (this->_hitPoints == 0) {
+		std::cout << "\033[31mFragTrap " << this->_name << " is already broken.\n\033[0m";
 		return ;
 	}
-	if (this->getEp() == 0) {
-		std::cout << "FragTrap " << this->getName() << " has no energy to attack.\n";
+	if (this->_energyPoints == 0) {
+		std::cout << "\033[31mFragTrap " << this->_name << " has no energy to attack.\n\033[0m";
 		return ;
 	}
-	std::cout << "FragTrap " << this->getName() << " attacks " << target << ", causing " << this->getAd() << " points of damage!\n";
-	this->setEp(this->getEp() - 1);
-	std::cout << "FragTrap " << this->getName() << " remains " << this->getEp() << "  EP.\n";
+	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!\n";
+	this->_energyPoints--;
+	std::cout << "FragTrap " << this->_name << " remains " << this->_energyPoints << "  EP.\n";
 }

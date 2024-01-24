@@ -3,9 +3,9 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
+SRC = ClapTrap.cpp main.cpp FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
-HDR = ScavTrap.hpp FragTrap.hpp ClapTrap.hpp
+HDR = FragTrap.hpp ClapTrap.hpp
 
 NAME = FragTrap
 
