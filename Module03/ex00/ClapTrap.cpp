@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 02:21:41 by yu               ###   ########.fr       */
+/*   Updated: 2024/01/24 20:34:30 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,12 @@ ClapTrap::~ClapTrap() {
 // member functions
 void	ClapTrap::attack(const std::string& target) {
 	if (this->_hitPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " is already broken.\n";
+		std::cout << "\033[31mClapTrap " << this->_name << " is already broken.\n\033[0m";
+
 		return ;
 	}
 	if (this->_energyPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " has no energy to attack.\n";
+		std::cout << "\033[31mClapTrap " << this->_name << " has no energy to attack.\n\033[30m";
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage!\n";
@@ -54,7 +55,7 @@ void	ClapTrap::attack(const std::string& target) {
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitPoints == 0) {
-		std::cout << "Don't do this! ClapTrap " << this->_name << " is already broken.\n";
+		std::cout << "\033[31mDon't do this! ClapTrap " << this->_name << " is already broken.\n\033[0m";
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " is attacked, causing " << amount << " points of damage!\n";
@@ -62,55 +63,29 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	if (this->_hitPoints < 0)
 		this->_hitPoints = 0;
 	if (this->_hitPoints == 0)
-		std::cout << "ClapTrap " << this->_name << " is broken.\n";
+		std::cout << "\033[31mClapTrap " << this->_name << " is broken.\n\033[0m";
 	else
 		std::cout << "ClapTrap " << this->_name << " remains " << this->_hitPoints << "  HP.\n";
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
+	if (this->_hitPoints >= 1000) {
+		std::cout << "\033[32mClapTrap " << this->_name << "'s Hp has reached the maximum.\n\033[0m";
+		return ;
+	}
 	if (this->_hitPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " is already broken.\n";
+		std::cout << "\033[31mClapTrap " << this->_name << " is already broken.\n\033[0m";
 		return ;
 	}
 	if (this->_energyPoints == 0) {
-		std::cout << "ClapTrap " << this->_name << " has no energy to be repaired.\n";
+		std::cout << "\033[31mClapTrap " << this->_name << " has no energy to be repaired.\n\033[0m";
 		return ;
 	}
 	std::cout << "ClapTrap " << this->_name << " is repaired, restore " << amount << " points of HP!\n";
 	this->_hitPoints += amount;
+	if (this->_hitPoints >= 1000)
+		this->_hitPoints = 1000;
+	this->_energyPoints--;
 	std::cout << "ClapTrap " << this->_name << " remains " << this->_hitPoints << "  HP.\n";
-}
-
-//setter
-void	ClapTrap::setName(std::string name) {
-	this->_name = name;
-}
-
-void	ClapTrap::setHp(int hp) {
-	this->_hitPoints = hp;
-}
-
-void	ClapTrap::setEp(int ep) {
-	this->_energyPoints = ep;
-}
-
-void	ClapTrap::setAd(int ad) {
-	this->_attackDamage = ad;
-}
-
-//getters
-std::string	ClapTrap::getName(void) const {
-	return this->_name;
-}
-
-int		ClapTrap::getHp(void) const {
-	return this->_hitPoints;
-}
-
-int		ClapTrap::getEp(void) const {
-	return this->_energyPoints;
-}
-
-int		ClapTrap::getAd(void) const {
-	return this->_attackDamage;
+	std::cout << "ClapTrap " << this->_name << " remains " << this->_energyPoints << "  EP.\n";
 }

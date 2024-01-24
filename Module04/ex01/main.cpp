@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/14 21:56:03 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 18:42:39 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int main( void ) {
 		for (int i = 0; i < 4; i++) {
 			std::cout << "The ideas of " << i << " animal is stored at " << arr[i]->whereIsMyBrain() << " and its type is " << arr[i]->getType() << std::endl;
 			arr[i]->makeSound();
-		}
-		// destroy
-		for (int i = 0; i < 4; i++)
 			delete arr[i];
+		}
 	}
 	// show what is shallow copy, need to modify the dog copy assignment operator
 	{
