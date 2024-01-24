@@ -1,25 +1,28 @@
 # Compiler and flags
 CC 			= c++
-CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-Wshadow -Wno-shadow
+CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRC = Bureaucrat.cpp
 OBJ = $(SRC:.cpp=.o)
-HDR = ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp ClapTrap.hpp
+HDR = $(SRC:.cpp=.hpp)
 
-NAME = DiamondTrap
+NAME = bureaucrat
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJ) main.o
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) main.o
 
 %.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
+main.o: main.cpp $(HDR)
+	$(CC) $(CFLAGS) -o main.o -c main.cpp
+
 # Clean up object files
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) main.o
 # Clean up object files and the library
 fclean: clean
 	rm -f $(NAME)

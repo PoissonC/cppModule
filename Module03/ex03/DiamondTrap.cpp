@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/06 21:15:41 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:39:41 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name), _name(name) {
 	std::cout << "Default constructor of DiamondTrap called" << std::endl;
 	this->setEp(50);
-	// std::cout << "Name: " << this->getName() << std::endl;
+	// std::cout << "Name of ClapTrap: " << ClapTrap::getName() << std::endl;
+	// std::cout << "Name of FragTrap: " << FragTrap::getName() << std::endl;
+	// std::cout << "Name of ScavTrap: " << ScavTrap::getName() << std::endl;
 	// std::cout << "Hp: " << this->getHp() << std::endl;
 	// std::cout << "Ep: " << this->getEp() << std::endl;
 	// std::cout << "Ad: " << this->getAd() << std::endl;
