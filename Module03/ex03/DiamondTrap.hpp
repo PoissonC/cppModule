@@ -24,8 +24,6 @@ class	DiamondTrap : public ScavTrap, public FragTrap {
 		~DiamondTrap();
 
 		// member functions
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
 		void	whoAmI(void);
 
 		using	ScavTrap::attack;

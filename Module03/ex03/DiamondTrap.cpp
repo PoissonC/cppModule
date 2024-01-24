@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 21:13:04 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/24 21:18:37 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ DiamondTrap::~DiamondTrap() {
 }
 
 // member functions
-void	DiamondTrap::takeDamage(unsigned int amount) {
-	ScavTrap::takeDamage(amount);
-}
-
-void	DiamondTrap::beRepaired(unsigned int amount) {
-	ScavTrap::beRepaired(amount);
-}
 
 void	DiamondTrap::whoAmI() {
 	std::cout << "\033[35mI am " << this->_name << " and my ClapTrap name is " << ClapTrap::_name << "\033[0m" << std::endl;
