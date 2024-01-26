@@ -14,7 +14,7 @@
 
 Dog::Dog() : Animal() {
 	std::cout << "Default constructor of Dog called" << std::endl;
-	Animal::type = "Dog";
+	this->type = "Dog";
 }
 
 Dog::Dog(const Dog& other) {
@@ -22,9 +22,16 @@ Dog::Dog(const Dog& other) {
 	*this = other;
 }
 
-Dog&	Dog::operator=(const Dog& other) {
+static void	swap(Dog &a, Dog &b) {
+	Dog	tmp = a;
+	a = b;
+	b = tmp;
+}
+
+Dog&	Dog::operator=(Dog other) {
 	std::cout << "Copy assignment of Dog operator called" << std::endl;
-	Animal::type = other.type;
+
+	this->type = other.type;
 	return *this;
 }
 

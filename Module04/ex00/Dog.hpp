@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/14 19:20:25 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/26 22:02:12 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@ class	Dog : public Animal {
 		//
 		Dog();
 		Dog(const Dog& other);
-		Dog& operator=(const Dog& other);
+		Dog&	Dog::operator=(Dog other);
 		~Dog();
 		//
 
 		void	makeSound( void ) const;
-
-	protected:
-		std::string	type;
 };
