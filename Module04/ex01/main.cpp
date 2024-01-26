@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/24 18:42:39 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:01:57 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,20 @@ int main( void ) {
 	}
 	// show what is shallow copy, need to modify the dog copy assignment operator
 	{
+
+		std::cout << "\033[32m";
 		const Dog *i = new Dog();
+		std::cout << "\033[0m";
+
+
+		std::cout << "\033[33m";
 		const Animal j = *i;
+		std::cout << "\033[0m";
+
+		std::cout << "\033[31m";
 		const Dog k = *i;
+		std::cout << "\033[0m";
+
 		std::cout << "The ideas of i is stored at " << i->whereIsMyBrain() << " and its type is " << i->getType() << std::endl;
 		std::cout << "The ideas of j is stored at " << j.whereIsMyBrain() << " and its type is " << j.getType() << std::endl;
 		std::cout << "The ideas of k is stored at " << k.whereIsMyBrain() << " and its type is " << k.getType() << std::endl;

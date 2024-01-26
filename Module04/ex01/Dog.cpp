@@ -15,7 +15,7 @@
 Dog::Dog() : Animal() {
 	std::cout << "Default constructor of Dog called" << std::endl;
 	_brain = new Brain;
-	Animal::type = "Dog";
+	this->type = "Dog";
 }
 
 Dog::Dog(const Dog& other) {
@@ -23,11 +23,12 @@ Dog::Dog(const Dog& other) {
 	*this = other;
 }
 
-Dog&	Dog::operator=(const Dog& other) {
+Dog&	Dog::operator=(const Dog& other) {// without this function, it would be shallow copy and cause double free issue
 	std::cout << "Copy assignment of Dog operator called" << std::endl;
-	_brain = new Brain; // without this line, it would be shallow copy and cause double free issue
-	if (this != &other)
-		Animal::type = other.type;
+	if (this == &other)
+		return *this;
+	_brain = new Brain;
+	Animal::type = other.type;
 	for (int i = 0; i < 100; i++)
 		_brain->setIdea(other._brain->getIdea(i), i);
 	return *this;

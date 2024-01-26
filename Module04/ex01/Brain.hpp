@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/14 21:23:23 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/26 17:28:05 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class	Brain{
 		~Brain();
 		//
 		std::string	getIdea(int	i) const;
-		void	setIdea(std::string newIdea, int i);
+		void		setIdea(std::string newIdea, int i);
 	private:
 		std::string	ideas[100];
 };

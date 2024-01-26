@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 22:12:06 by yu                #+#    #+#             */
-/*   Updated: 2024/01/14 21:09:04 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/26 18:01:34 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ Animal::Animal() : type("Non") {
 
 Animal::Animal(const Animal& other) {
 	std::cout << "Copy constructor of Animal called" << std::endl;
-	*this = other;
+	if (this != &other)
+		type = other.type;
 }
 
 Animal&	Animal::operator=(const Animal& other) {

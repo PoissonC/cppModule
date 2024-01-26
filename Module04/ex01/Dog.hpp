@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 20:46:15 by yu                #+#    #+#             */
-/*   Updated: 2024/01/14 21:10:47 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/01/26 17:35:41 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ class	Dog : public Animal {
 		const Brain*	whereIsMyBrain( void ) const;
 		//
 		void	makeSound( void ) const;
-
-	protected:
-		std::string	type;
 
 	private:
 		Brain	*_brain;
