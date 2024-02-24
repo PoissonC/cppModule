@@ -14,7 +14,7 @@
 
 #include "Fixed.hpp"
 
-class	Point{
+class	Point {
 	public:
 		// constructor & destructor
 		Point();
@@ -28,7 +28,19 @@ class	Point{
 		Fixed	getX() const;
 		Fixed	getY() const;
 	private:
+		class		PointImpl;
+		PointImpl	*m_p;
+		void		swap(Point &tar);
+};
+
+class Point::PointImpl {
+	public:
+		PointImpl();
+		PointImpl(Fixed x, Fixed y);
+		PointImpl(const float x, const float y);
+		
+		//contents
 		const Fixed	_x;
 		const Fixed	_y;
-
 };
+

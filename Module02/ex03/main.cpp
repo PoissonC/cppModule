@@ -21,17 +21,18 @@ int main( void ) {
 	std::cout <<"\033[31m";
 	Point	c(4, 0);
 	std::cout << "\033[32m";
-	Point	P(0.5f, 3);
+	Point	P(6, 6);
 
 	std::cout << "\033[33m";
-	Point	ts = P;
+	Point	ts;
+	ts = P;
 	std::cout << "\033[0m";
 	//2.5f, 2 -> not
 	//3.5f, 0.5f - > not (on the line)
 	//2, 1 -> yes (symmetric)
 	//0.5f, 3 -> yes (symmetric)
 
-	if	(bsp(a, b ,c, P))
+	if	(bsp(a, b ,c, ts))
 		std::cout << "The point is in the triangle." << std::endl;
 	else
 		std::cout << "The point is not in the triangle." << std::endl;
