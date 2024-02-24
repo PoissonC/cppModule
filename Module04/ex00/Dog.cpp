@@ -22,15 +22,8 @@ Dog::Dog(const Dog& other) {
 	*this = other;
 }
 
-static void	swap(Dog &a, Dog &b) {
-	Dog	tmp = a;
-	a = b;
-	b = tmp;
-}
-
-Dog&	Dog::operator=(Dog other) {
+Dog&	Dog::operator=(const Dog& other) {
 	std::cout << "Copy assignment of Dog operator called" << std::endl;
-
 	this->type = other.type;
 	return *this;
 }
