@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:39:35 by ychen2            #+#    #+#             */
-/*   Updated: 2024/02/28 22:34:59 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/02/28 22:49:47 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main() {
 	ICharacter* bob = new Character("bob");
 	ICharacter* mike = new Character("mike");
 	{
-		Character copy_of_me = *(Character*)me;
+		Character copy_of_me(*(Character*)me);
 		copy_of_me.use(1, *mike);
 		copy_of_me.unequip(1);
 	}
