@@ -5,22 +5,56 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 22:12:12 by yu                #+#    #+#             */
-/*   Updated: 2024/01/16 15:37:02 by ychen2           ###   ########.fr       */
+/*   Created: 2024/02/24 17:39:35 by ychen2            #+#    #+#             */
+/*   Updated: 2024/02/28 22:34:59 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Character.hpp"
+#include "MateriaSource.hpp"
 
-
-int main( void ) {
-	IMateriaSource* src = new MateriaSource(); src->learnMateria(new Ice()); src->learnMateria(new Cure());
+int	main() {
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
-	AMateria* tmp;
-	tmp = src->createMateria("ice"); me->equip(tmp);
-	tmp = src->createMateria("cure"); me->equip(tmp);
-	ICharacter* bob = new Character("bob"); me->use(0, *bob);
+	ICharacter* bob = new Character("bob");
+	ICharacter* mike = new Character("mike");
+	{
+		Character copy_of_me = *(Character*)me;
+		copy_of_me.use(1, *mike);
+		copy_of_me.unequip(1);
+	}
 	me->use(1, *bob);
-	delete bob; delete me; delete src;
+	me->unequip(1);
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	me->use(0, *bob);
+	me->use(1, *bob);
+	me->use(1, *bob);
+	{
+		Character copy_of_me = *(Character*)me;
+		copy_of_me.use(0, *mike);
+		copy_of_me.use(2, *mike);
+		copy_of_me.unequip(2);
+		copy_of_me.use(2, *mike);
+		copy_of_me.unequip(3);
+	}
 
+	delete mike;
+	delete bob;
+	delete me;
+	delete src;
 	return 0;
 }

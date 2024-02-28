@@ -3,26 +3,23 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98
 
 #Sources and objects
-SRC = AMateria.cpp
+SRC = AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-HDR = $(SRC:.cpp=.hpp)
+HDR = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp IMateriaSource.hpp
 
-NAME = sounds
+NAME = rpg
 
 all: $(NAME)
 
-$(NAME): $(OBJ) main.o
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) main.o
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-main.o: main.cpp $(HDR)
-	$(CC) $(CFLAGS) -o main.o -c main.cpp
-
 # Clean up object files
 clean:
-	rm -f $(OBJ) main.o
+	rm -f $(OBJ)
 # Clean up object files and the library
 fclean: clean
 	rm -f $(NAME)
