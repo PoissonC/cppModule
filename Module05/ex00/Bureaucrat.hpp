@@ -19,7 +19,6 @@
 class	Bureaucrat{
 	public:
 		// OCF
-		Bureaucrat();
 		Bureaucrat(const std::string & name, int n);
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(Bureaucrat other);
@@ -27,8 +26,8 @@ class	Bureaucrat{
 		//
 		
 		// getters
-		std::string	getName();
-		int			getGrade();
+		std::string	getName() const;
+		int			getGrade() const ;
 		//
 
 		// Member funcs
