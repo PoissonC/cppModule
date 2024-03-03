@@ -3,11 +3,11 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 #Sources and objects
-SRC = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 OBJ = $(SRC:.cpp=.o)
 HDR = $(SRC:.cpp=.hpp)
 
-NAME = formExe
+NAME = intern
 
 all: $(NAME)
 

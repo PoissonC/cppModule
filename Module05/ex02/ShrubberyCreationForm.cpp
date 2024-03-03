@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:23:38 by yu                #+#    #+#             */
-/*   Updated: 2024/03/03 22:00:42 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/03 22:50:22 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ShrubberyCreationForm::action() const {
 		file << "      // \\\\" << std::endl;
 
 		file.close();
-		std::cout << "ShrubberyCreationForm action called. ASCII tree written to " << this->getName() + "_shrubbery" << std::endl;
+		std::cout << "ShrubberyCreationForm action called. ASCII tree written to " << this->getTarget() + "_shrubbery" << std::endl;
 	}
 	else {
 		std::cerr << "Error: Could not open file for writing." << std::endl;

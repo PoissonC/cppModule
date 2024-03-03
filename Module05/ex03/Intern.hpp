@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 18:05:40 by yu                #+#    #+#             */
-/*   Updated: 2024/03/03 21:57:41 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/03 22:47:32 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+
+Form*	createPPF(const std::string & tar);
+Form*	createRRF(const std::string & tar);
+Form*	createSCF(const std::string & tar);
 
 class Intern {
 	public:
@@ -25,11 +29,11 @@ class Intern {
 		//
 
 		// Member funcs
-		AForm *	makeForm(const std::string & formName, const std::string & target);
+		Form*	makeForm(const std::string & formName, const std::string & target);
 		//
 	private:
-		class	Forms {
+		struct	s_forms {
 			std::string	formName;
-			
+			Form*		(*formFactory)(const std::string & tar);
 		};
 };

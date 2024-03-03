@@ -29,6 +29,6 @@ std::cout << "Drilling noises..." << std::endl;
 		std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
 	}
 	else {
-		std::cout << "The robotomy on " << this->getName() << " failed." << std::endl;
+		std::cout << "The robotomy on " << this->getTarget() << " failed." << std::endl;
 	}
 }
