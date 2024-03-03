@@ -17,7 +17,7 @@
 class	PresidentialPardonForm : public AForm {
 	public:
 		// OCF
-		PresidentialPardonForm(const std::string & name, const std::string & target);
+		PresidentialPardonForm(const std::string & target);
 		virtual ~PresidentialPardonForm();
 		//
 		

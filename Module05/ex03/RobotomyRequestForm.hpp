@@ -19,7 +19,7 @@
 class	RobotomyRequestForm : public AForm {
 	public:
 		// OCF
-		RobotomyRequestForm(const std::string & name, const std::string & target);
+		RobotomyRequestForm(const std::string & target);
 		virtual ~RobotomyRequestForm();
 		//
 		

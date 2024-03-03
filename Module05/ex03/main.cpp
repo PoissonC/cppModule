@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 16:07:52 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/03 17:59:13 by yu               ###   ########.fr       */
+/*   Updated: 2024/03/03 21:47:49 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int main() {
 	// PresidentialPardonForm test
 	try {
-		PresidentialPardonForm form("The First President", "The First Criminal");
+		PresidentialPardonForm form("The First Criminal");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("Kim", 6);
@@ -30,7 +30,7 @@ int main() {
 	}
 
 	try {
-		PresidentialPardonForm form("The Second President", "The Second Criminal");
+		PresidentialPardonForm form("The Second Criminal");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("Kim", 5);
@@ -43,7 +43,7 @@ int main() {
 
 	// RobotomyRequestForm test
 	try {
-		RobotomyRequestForm form("The First Robot", "The First Target");
+		RobotomyRequestForm form("The First Target");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("John", 10);
@@ -54,7 +54,7 @@ int main() {
 	}
 
 	try {
-		RobotomyRequestForm form("The Second Robot", "The Second Target");
+		RobotomyRequestForm form("The Second Target");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("John", 10);
@@ -68,7 +68,7 @@ int main() {
 
 	// ShrubberyCreationForm test
 	try {
-		ShrubberyCreationForm form("The First Shrubbery", "The First house");
+		ShrubberyCreationForm form("The First house");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("Bill", 10);
@@ -79,7 +79,7 @@ int main() {
 	}
 
 	try {
-		ShrubberyCreationForm form("The Second Shrubbery", "The Second house");
+		ShrubberyCreationForm form("The Second house");
 		std::cout << form << std::endl;
 
 		Bureaucrat bureaucrat("Bill", 10);
@@ -92,7 +92,7 @@ int main() {
 
 	//copy test
 	try {
-		ShrubberyCreationForm form("The Contract", "The House");
+		ShrubberyCreationForm form("The House");
 		std::cout << form << std::endl;
 
 		ShrubberyCreationForm copy(form);

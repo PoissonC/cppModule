@@ -12,7 +12,7 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string & name, const std::string & target) : AForm(name, target, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string & target) : AForm("robotomy request", target, 72, 45) {
 	// std::cout << "Default constructor of RobotomyRequestForm called" << std::endl;
 	// Seed the random number generator
 	std::srand(std::time(NULL));
