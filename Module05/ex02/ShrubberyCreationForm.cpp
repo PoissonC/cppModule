@@ -6,13 +6,13 @@
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:23:38 by yu                #+#    #+#             */
-/*   Updated: 2024/03/03 17:21:34 by yu               ###   ########.fr       */
+/*   Updated: 2024/03/03 18:02:13 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string & target) : AForm(target, 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string & name, const std::string & target) : AForm(name, target, 145, 137) {
 	// std::cout << "Default constructor of ShrubberyCreationForm called" << std::endl;
 }
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 }
 
 void	ShrubberyCreationForm::action() const {
-	std::ofstream file(this->getName().append("_shrubbery").c_str());
+	std::ofstream file(this->getTarget().append("_shrubbery").c_str());
 	if (file.is_open()) {
 		file << "       _-_" << std::endl;
 		file << "    /~~   ~~\\" << std::endl;

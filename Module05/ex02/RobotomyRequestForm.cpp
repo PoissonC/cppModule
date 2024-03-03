@@ -12,7 +12,7 @@
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string & target) : AForm(target, 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string & name, const std::string & target) : AForm(name, target, 72, 45) {
 	// std::cout << "Default constructor of RobotomyRequestForm called" << std::endl;
 	// Seed the random number generator
 	std::srand(std::time(NULL));
@@ -26,7 +26,7 @@ void	RobotomyRequestForm::action() const {
 std::cout << "Drilling noises..." << std::endl;	
 	// Generate a random number and determine success or failure
 	if (std::rand() % 2) {
-		std::cout << this->getName() << " has been robotomized successfully." << std::endl;
+		std::cout << this->getTarget() << " has been robotomized successfully." << std::endl;
 	}
 	else {
 		std::cout << "The robotomy on " << this->getName() << " failed." << std::endl;

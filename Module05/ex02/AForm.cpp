@@ -12,7 +12,7 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string & name, int sign, int exe) : _attr(new AFormImpl(name, sign, exe)) {
+AForm::AForm(const std::string & name, const std::string & tar, int sign, int exe) : _attr(new AFormImpl(name, tar, sign, exe)) {
 	std::cout << "Default constructor of basic form called" << std::endl;
 	if (sign > 150 || exe > 150) {
 		delete this->_attr;
@@ -24,11 +24,11 @@ AForm::AForm(const std::string & name, int sign, int exe) : _attr(new AFormImpl(
 	}
 }
 
-AForm::AFormImpl::AFormImpl(const std::string & name, int sign, int exe) : _name(name), _signeRequiredGrade(sign), _executeRequiredGrade(exe) {
+AForm::AFormImpl::AFormImpl(const std::string & name, const std::string & tar, int sign, int exe) : _name(name), _target(tar), _signeRequiredGrade(sign), _executeRequiredGrade(exe) {
 	this->_isSigned = false;
 }
 
-AForm::AForm(const AForm& other) : _attr(new AFormImpl(other._attr->_name, other._attr->_signeRequiredGrade, other._attr->_executeRequiredGrade)) {
+AForm::AForm(const AForm& other) : _attr(new AFormImpl(other._attr->_name, other._attr->_target, other._attr->_signeRequiredGrade, other._attr->_executeRequiredGrade)) {
 	std::cout << "Copy constructor of basic form called" << std::endl;
 	this->_attr->_isSigned = other._attr->_isSigned;
 }
@@ -53,6 +53,10 @@ std::string	AForm::getName() const {
 	return this->_attr->_name;
 }
 
+std::string	AForm::getTarget() const {
+	return this->_attr->_target;
+}
+
 bool	AForm::getIsSigned() const {
 	return this->_attr->_isSigned;
 }
@@ -67,12 +71,13 @@ int		AForm::getExecuteRequiredGrade() const {
 
 std::ostream& operator<<(std::ostream& os, const AForm& form) {
     os << "Form name: "<< form.getName() << std::endl;
+    os << "Target: "<< form.getTarget() << std::endl;
 	if (form.getIsSigned())
 		os << "The form is signed." << std::endl;
 	else
 		os << "The form is not signed yet." << std::endl;
 	os << "Required Grade to sign the form: " << form.getSigneRequiredGrade() << std::endl;
-	os << "Required Grade to execute the form: " << form.getExecuteRequiredGrade() << std::endl;
+	os << "Required Grade to execute the form: " << form.getExecuteRequiredGrade();
     return os;
 }
 

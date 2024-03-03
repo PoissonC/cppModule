@@ -12,7 +12,7 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string & target) : AForm(target, 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string & name, const std::string & target) : AForm(name, target, 25, 5) {
 	// std::cout << "Default constructor of PresidentialPardonForm called" << std::endl;
 }
 
@@ -21,5 +21,5 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 }
 
 void	PresidentialPardonForm::action() const {
-	std::cout << this->getName() << " has been pardoned by Zafod Beeblebrox." << std::endl;
+	std::cout << this->getTarget() << " has been pardoned by Zafod Beeblebrox." << std::endl;
 }

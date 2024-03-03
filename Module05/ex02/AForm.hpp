@@ -22,7 +22,7 @@ class Bureaucrat;
 class	AForm{
 	public:
 		// OCF
-		AForm(const std::string & name, int sign, int exe);
+		AForm(const std::string & name, const std::string & tar, int sign, int exe);
 		AForm(const AForm& other);
 		virtual AForm& operator=(AForm other);
 		virtual ~AForm();
@@ -30,6 +30,7 @@ class	AForm{
 		
 		// getters
 		std::string	getName() const;
+		std::string	getTarget() const;
 		bool		getIsSigned() const;
 		int			getSigneRequiredGrade() const;
 		int			getExecuteRequiredGrade() const;
@@ -72,10 +73,11 @@ class	AForm{
 class AForm::AFormImpl {
 	public:
 		//constructors
-		AFormImpl(const std::string & name, int sign, int exe);
+		AFormImpl(const std::string & name, const std::string & tar, int sign, int exe);
 
 		//attributes
 		const std::string	_name;
+		const std::string	_target;
 		bool				_isSigned;
 		const int			_signeRequiredGrade;
 		const int			_executeRequiredGrade;
