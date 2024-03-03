@@ -17,7 +17,7 @@
 #include <stdexcept>
 #include "AForm.hpp"
 
-class	AForm;
+class	Form;
 
 class	Bureaucrat{
 	public:
@@ -36,7 +36,7 @@ class	Bureaucrat{
 		// Member funcs
 		void		incrementGrade();
 		void		decrementGrade();
-		bool		signForm(AForm & AForm);
+		bool		signForm(Form & Form);
 		//
 
 		// Utils

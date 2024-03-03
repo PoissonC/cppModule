@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 18:05:34 by yu                #+#    #+#             */
-/*   Updated: 2024/03/03 18:19:37 by yu               ###   ########.fr       */
+/*   Updated: 2024/03/03 21:54:04 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ AForm * Intern::makeForm(const std::string & formName, const std::string & targe
 	if (formName == "shrubbery creation") {
 		std::cout << "Intern creates " << formName << std::endl;
 		return new ShrubberyCreationForm(target);
-	} else if (formName == "robotomy request") {
+	}
+	else if (formName == "robotomy request") {
 		std::cout << "Intern creates " << formName << std::endl;
 		return new RobotomyRequestForm(target);
-	} else if (formName == "presidential pardon") {
+	}
+	else if (formName == "presidential pardon") {
 		std::cout << "Intern creates " << formName << std::endl;
 		return new PresidentialPardonForm(target);
-	} else {
+	}
+	else {
 		std::cout << "Intern doesn't know how to create " << formName << std::endl;
 		return NULL;
 	}

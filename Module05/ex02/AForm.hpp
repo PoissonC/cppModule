@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                         :+:      :+:    :+:   */
+/*   Form.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -19,13 +19,13 @@
 
 class Bureaucrat;
 
-class	AForm{
+class	Form{
 	public:
 		// OCF
-		AForm(const std::string & name, const std::string & tar, int sign, int exe);
-		AForm(const AForm& other);
-		virtual AForm& operator=(AForm other);
-		virtual ~AForm();
+		Form(const std::string & name, const std::string & tar, int sign, int exe);
+		Form(const Form& other);
+		virtual Form& operator=(Form other);
+		virtual ~Form();
 		//
 		
 		// getters
@@ -43,7 +43,7 @@ class	AForm{
 		//
 
 		// Utils
-		void		swap(AForm &tar);
+		void		swap(Form &tar);
 		//
 
 		// Exceptions
@@ -66,14 +66,14 @@ class	AForm{
 		};
 		//
 	private:
-		class		AFormImpl;
-		AFormImpl	*_attr;
+		class		FormImpl;
+		FormImpl	*_attr;
 };
 
-class AForm::AFormImpl {
+class Form::FormImpl {
 	public:
 		//constructors
-		AFormImpl(const std::string & name, const std::string & tar, int sign, int exe);
+		FormImpl(const std::string & name, const std::string & tar, int sign, int exe);
 
 		//attributes
 		const std::string	_name;
@@ -83,4 +83,4 @@ class AForm::AFormImpl {
 		const int			_executeRequiredGrade;
 };
 
-std::ostream& operator<<(std::ostream& os, const AForm& form);
+std::ostream& operator<<(std::ostream& os, const Form& form);

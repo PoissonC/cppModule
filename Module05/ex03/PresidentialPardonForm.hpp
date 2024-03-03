@@ -14,7 +14,7 @@
 
 #include "AForm.hpp"
 
-class	PresidentialPardonForm : public AForm {
+class	PresidentialPardonForm : public Form {
 	public:
 		// OCF
 		PresidentialPardonForm(const std::string & target);

@@ -12,7 +12,7 @@
 
 #include "AForm.hpp"
 
-AForm::AForm(const std::string & name, const std::string & tar, int sign, int exe) : _attr(new AFormImpl(name, tar, sign, exe)) {
+Form::Form(const std::string & name, const std::string & tar, int sign, int exe) : _attr(new FormImpl(name, tar, sign, exe)) {
 	std::cout << "Default constructor of basic form called" << std::endl;
 	if (sign > 150 || exe > 150) {
 		delete this->_attr;
@@ -24,52 +24,52 @@ AForm::AForm(const std::string & name, const std::string & tar, int sign, int ex
 	}
 }
 
-AForm::AFormImpl::AFormImpl(const std::string & name, const std::string & tar, int sign, int exe) : _name(name), _target(tar), _signeRequiredGrade(sign), _executeRequiredGrade(exe) {
+Form::FormImpl::FormImpl(const std::string & name, const std::string & tar, int sign, int exe) : _name(name), _target(tar), _signeRequiredGrade(sign), _executeRequiredGrade(exe) {
 	this->_isSigned = false;
 }
 
-AForm::AForm(const AForm& other) : _attr(new AFormImpl(other._attr->_name, other._attr->_target, other._attr->_signeRequiredGrade, other._attr->_executeRequiredGrade)) {
+Form::Form(const Form& other) : _attr(new FormImpl(other._attr->_name, other._attr->_target, other._attr->_signeRequiredGrade, other._attr->_executeRequiredGrade)) {
 	std::cout << "Copy constructor of basic form called" << std::endl;
 	this->_attr->_isSigned = other._attr->_isSigned;
 }
 
-void	AForm::swap(AForm &tar) {
-	AForm::AFormImpl	*temp = this->_attr;
+void	Form::swap(Form &tar) {
+	Form::FormImpl	*temp = this->_attr;
 	this->_attr = tar._attr;
 	tar._attr = temp;
 }
 
-AForm&	AForm::operator=(AForm other) {
+Form&	Form::operator=(Form other) {
 	std::cout << "Copy assignment operator of basic form called" << std::endl;
 	this->swap(other);
 	return *this;
 }
 
-AForm::~AForm() {
+Form::~Form() {
 	delete this->_attr;
 }
 
-std::string	AForm::getName() const {
+std::string	Form::getName() const {
 	return this->_attr->_name;
 }
 
-std::string	AForm::getTarget() const {
+std::string	Form::getTarget() const {
 	return this->_attr->_target;
 }
 
-bool	AForm::getIsSigned() const {
+bool	Form::getIsSigned() const {
 	return this->_attr->_isSigned;
 }
 
-int		AForm::getSigneRequiredGrade() const {
+int		Form::getSigneRequiredGrade() const {
 	return this->_attr->_signeRequiredGrade;
 }
 
-int		AForm::getExecuteRequiredGrade() const {
+int		Form::getExecuteRequiredGrade() const {
 	return this->_attr->_executeRequiredGrade;
 }
 
-std::ostream& operator<<(std::ostream& os, const AForm& form) {
+std::ostream& operator<<(std::ostream& os, const Form& form) {
     os << "Form name: "<< form.getName() << std::endl;
     os << "Target: "<< form.getTarget() << std::endl;
 	if (form.getIsSigned())
@@ -81,12 +81,12 @@ std::ostream& operator<<(std::ostream& os, const AForm& form) {
     return os;
 }
 
-void	AForm::beSigned(Bureaucrat & bureaucrat) {
+void	Form::beSigned(Bureaucrat & bureaucrat) {
 	if (bureaucrat.signForm(*this))
 		this->_attr->_isSigned = true;
 }
 
-void	AForm::execute(Bureaucrat const & executor) const {
+void	Form::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > this->_attr->_executeRequiredGrade)
 		throw GradeTooLowException();
 	else if (!this->_attr->_isSigned) {
@@ -96,22 +96,22 @@ void	AForm::execute(Bureaucrat const & executor) const {
 	this->action();
 }
 
-void	AForm::action() const {
+void	Form::action() const {
 	throw UnDefined();
 }
 
-const char* AForm::GradeTooHighException::what() const throw() {
+const char* Form::GradeTooHighException::what() const throw() {
 	return "Grade is too high";
 }
 
-const char* AForm::GradeTooLowException::what() const throw() {
+const char* Form::GradeTooLowException::what() const throw() {
 	return "Grade is too low";
 }
 
-const char* AForm::UnDefined::what() const throw() {
+const char* Form::UnDefined::what() const throw() {
 	return "The behavior of the form is not defined.";
 }
 
-const char* AForm::NotSigned::what() const throw() {
+const char* Form::NotSigned::what() const throw() {
 	return "The form is not signed yet, thus it cannot be executed.";
 }

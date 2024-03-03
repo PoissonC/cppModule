@@ -16,7 +16,7 @@
 #include <cstdlib> // For std::rand() and std::srand()
 #include <ctime>   // For std::time(), to seed the random number generator
 
-class	RobotomyRequestForm : public AForm {
+class	RobotomyRequestForm : public Form {
 	public:
 		// OCF
 		RobotomyRequestForm(const std::string & target);

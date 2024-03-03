@@ -66,17 +66,17 @@ void Bureaucrat::decrementGrade() {
 		this->_attr->_grade++;
 }
 
-bool	Bureaucrat::signForm(AForm & AForm) {
-	if (AForm.getIsSigned()) {
-		std::cout << this->_attr->_name << " couldn't sign " << AForm.getName() << " because this AForm is already signed." << std::endl;
+bool	Bureaucrat::signForm(Form & Form) {
+	if (Form.getIsSigned()) {
+		std::cout << this->_attr->_name << " couldn't sign " << Form.getName() << " because this Form is already signed." << std::endl;
 		return (false);
 	}
-	else if (AForm.getSigneRequiredGrade() >= this->_attr->_grade) {
-		std::cout << this->_attr->_name << " signed " << AForm.getName() << std::endl;
+	else if (Form.getSigneRequiredGrade() >= this->_attr->_grade) {
+		std::cout << this->_attr->_name << " signed " << Form.getName() << std::endl;
 		return (true);
 	}
 	else {
-		std::cout << this->_attr->_name << " couldn't sign " << AForm.getName() << " because his grade is too low." << std::endl;
+		std::cout << this->_attr->_name << " couldn't sign " << Form.getName() << " because his grade is too low." << std::endl;
 		return (false);
 	}
 }
