@@ -9,4 +9,5 @@ int main() {
 	std::cout << f << std::endl;
 	std::cout << roundf(f * 100) << std::endl;
 	std::cout << roundf(f * (100)) / (100) << std::endl;
+
 }
