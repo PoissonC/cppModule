@@ -3,7 +3,7 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 #Sources and objects
-SRC = 
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
 HDR = Array.hpp Array.tpp
 
@@ -11,18 +11,15 @@ NAME = array
 
 all: $(NAME)
 
-$(NAME): $(OBJ) main.o
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) main.o
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.cpp $(HDR) Makefile
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-main.o: main.cpp $(HDR) Makefile
-	$(CC) $(CFLAGS) -o main.o -c main.cpp -I ./
-
 # Clean up object files
 clean:
-	rm -f $(OBJ) main.o
+	rm -f $(OBJ)
 # Clean up object files and the library
 fclean: clean
 	rm -f $(NAME)
