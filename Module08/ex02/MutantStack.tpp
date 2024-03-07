@@ -19,21 +19,21 @@ MutantStack<T, Container>::MutantStack(const Container& cont) : std::stack<T, Co
 }
 
 template<typename T, typename Container>
-typename Container::iterator MutantStack<T, Container>::begin() {
+typename MutantStack<T, Container>::iterator MutantStack<T, Container>::begin() {
 	return this->c.begin();
 }
 
 template<typename T, typename Container>
-typename Container::iterator MutantStack<T, Container>::end() {
+typename MutantStack<T, Container>::iterator MutantStack<T, Container>::end() {
 	return this->c.end();
 }
 
 template<typename T, typename Container>
-typename Container::const_iterator MutantStack<T, Container>::begin() const {
+typename MutantStack<T, Container>::const_iterator MutantStack<T, Container>::begin() const {
 	return this->c.begin();
 }
 
 template<typename T, typename Container>
-typename Container::const_iterator MutantStack<T, Container>::end() const {
+typename MutantStack<T, Container>::const_iterator MutantStack<T, Container>::end() const {
 	return this->c.end();
 }
