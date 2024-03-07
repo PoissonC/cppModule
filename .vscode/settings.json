@@ -75,6 +75,8 @@
 		"concepts": "cpp",
 		"numbers": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"*.tpp": "c",
+		"list": "cpp"
 	}
 }
