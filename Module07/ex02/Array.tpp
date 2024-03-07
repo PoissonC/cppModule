@@ -6,9 +6,11 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 23:10:22 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/07 21:39:56 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/07 22:09:18 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 template <typename T>
 Array<T>::Array() : _data(0), _size(0) {
