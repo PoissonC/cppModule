@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:19:01 by ychen2            #+#    #+#             */
-/*   Updated: 2024/02/27 23:11:14 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:53:55 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Character : public ICharacter {
 		~Character();
 
 		std::string const & getName() const;
+		AMateria*			getInventory(const int & index) const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);

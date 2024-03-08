@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 17:39:35 by ychen2            #+#    #+#             */
-/*   Updated: 2024/02/28 22:49:47 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:55:33 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "MateriaSource.hpp"
 
 int	main() {
+	AMateria *floor;
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -49,7 +50,9 @@ int	main() {
 		copy_of_me.use(2, *mike);
 		copy_of_me.unequip(2);
 		copy_of_me.use(2, *mike);
+		floor = copy_of_me.getInventory(3);
 		copy_of_me.unequip(3);
+		delete floor;
 	}
 
 	delete mike;

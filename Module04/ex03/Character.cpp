@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:19:01 by ychen2            #+#    #+#             */
-/*   Updated: 2024/02/28 22:34:22 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/08 11:54:48 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ Character::~Character() {
 
 std::string	const & Character::getName() const {
 	return (this->_name);
+}
+AMateria* Character::getInventory(const int & index) const {
+	if (this->_iused[index])
+		return this->_inventory[index];
+	else
+		return NULL;
 }
 
 void	Character::equip(AMateria* m) {
