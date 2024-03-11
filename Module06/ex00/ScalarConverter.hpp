@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:21:24 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/04 22:56:58 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/12 01:15:18 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <string>
 #include <cerrno>
 #include <climits>
+#include <limits>
 #include <cstdlib>
 
 typedef enum e_type {
@@ -29,11 +30,6 @@ class ScalarConverter
 {
 	private:
 		ScalarConverter();
-		static t_type	check_type(std::string & tar);
-		static bool		convert_char(std::string & orign);
-		static bool		convert_int(std::string & orign);
-		static bool		convert_float(std::string & orign);
-		static bool		convert_double(std::string & orign);
 	public:
 		static bool		convert(std::string & orign);
 };

@@ -1,6 +1,6 @@
 # Compiler and flags
 CC 			= c++
-CFLAGS 		= -std=c++98#-Wall -Wextra -Werror -std=c++98 #-fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 #Sources and objects
 SRC = ScalarConverter.cpp

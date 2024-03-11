@@ -6,15 +6,21 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:24:19 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/04 23:05:07 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/12 02:21:49 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
+t_type	check_type(std::string & tar);
+bool	convert_char(std::string & orign);
+bool	convert_int(std::string & orign);
+bool	convert_float(std::string & orign);
+bool	convert_double(std::string & orign);
+
 ScalarConverter::ScalarConverter() {}
 
-t_type	ScalarConverter::check_type(std::string & tar) {
+t_type	check_type(std::string & tar) {
 	size_t	len = tar.length();
 	size_t	i = 0;
 	if (tar.at(i) == '-')
@@ -28,7 +34,7 @@ t_type	ScalarConverter::check_type(std::string & tar) {
 	}
 	if (i == len)
 		return DOUBLE;
-	if (tar[i] == 'f')
+	if (tar[i] == 'f' && tar[i - 1] != '.')
 		return FLOAT;
 	if (tar.at(0) == '\'' && tar.at(len - 1) == '\'') {
 		if (len != 3)
@@ -42,6 +48,18 @@ bool	ScalarConverter::convert(std::string & orign) {
 	t_type	orign_type = check_type(orign);
 
 	if (orign_type == ERR) {
+		if (orign == "nan" || orign == "nanf") {
+			std::cout << "char: impossible\nint: impossible\nfloat: nanf\ndouble: nan\n";
+			return false;
+		}
+		if (orign == "+inf" || orign == "+inff") {
+			std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf\n";
+			return false;
+		}
+		if (orign == "-inf" || orign == "-inff") {
+			std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: inf\n";
+			return false;
+		}
 		std::cerr << "Invalid input." << std::endl;
 		return true;
 	}
@@ -55,59 +73,108 @@ bool	ScalarConverter::convert(std::string & orign) {
 		return convert_double(orign);
 }
 
-bool	ScalarConverter::convert_char(std::string & orign) {
-	char	character;
-
-	std::cout << "is char\n";
-	character = orign[1];
-	if (std::isprint(character))
-		std::cout << "char: '" << character << "\'" <<std::endl;
-	else
-		std::cout << "char:  Non displayable" << std::endl;
-	
+bool	convert_char(std::string & orign) {
+	// std::cout << "is char\n";
+	char character = orign[1];
+	std::cout << "char: '" << character << "'" <<std::endl;
 	std::cout << "int: " << static_cast<int>(character) << std::endl;
 	std::cout << "float: " << static_cast<float>(character) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(character) << ".0" << std::endl;
-	
-}
-
-bool	ScalarConverter::convert_int(std::string & orign) {
-	int		integer;
-	char	*end;
-
-	std::cout << "is int\n";
-	// std::istringstream(orign) >> integer;
-	integer = static_cast<int>(orign);
-	if (errno == ERANGE) {
-		std::cerr << "Int overflow" << std::endl;
-		return true;
-	}
-	if (std::isprint(integer))
-		std::cout << "char: '" << static_cast<char>(integer) << "\'" <<std::endl;
-	else
-		std::cout << "char:  Non displayable" << std::endl;
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << static_cast<float>(integer) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(integer) << ".0" << std::endl;
 	return false;
 }
 
-bool	ScalarConverter::convert_float(std::string & orign) {
-	char	character;
-	int		integer;
-	float	floating;
-	double	double_precision;
-
-	std::cout << "is float\n";
-	std::istringstream(orign) >> floating;
+bool	convert_int(std::string & orign) {
+	// std::cout << "is int\n";
+	long	value = std::strtol(orign.c_str(), NULL, 10);
+	// std::cout << "long: " << value << std::endl;
+	if (value > INT_MAX || value < INT_MIN) {
+		std::cerr << "Int overflow" << std::endl;
+		return true;
+	}
+	int		integer = static_cast<int>(value);
+	if (integer > CHAR_MAX || integer < CHAR_MIN) {
+		std::cout << "char: impossible" << std::endl;
+	}
+	else {
+		if (integer >= 32 && integer <= 126)
+			std::cout << "char: '" << static_cast<char>(integer) << "'" <<std::endl;
+		else
+			std::cout << "char:  Non displayable" << std::endl;
+	}
+	std::cout << "int: " << integer << std::endl;
+	if (integer >= 1000000) {
+		std::cout << "float: " << static_cast<float>(integer) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(integer) << std::endl;
+	}
+	else {
+		std::cout << "float: " << static_cast<float>(integer) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(integer) << ".0" << std::endl;
+	}
+	return false;
 }
 
-bool	ScalarConverter::convert_double(std::string & orign) {
-	char	character;
-	int		integer;
-	float	floating;
-	double	double_precision;
+bool	convert_float(std::string & orign) {
+	// std::cout << "is float\n";
+	errno = 0;
+	float	floating = std::strtof(orign.c_str(), NULL);
+	if (floating <= std::numeric_limits<float>::min()) {
+		std::cerr << "Float underflow" << std::endl;
+		return true;
+	}
+	else if (errno == ERANGE) {
+		std::cerr << "Float overflow" << std::endl;
+		return true;
+	}
+	if (floating > CHAR_MAX || floating < CHAR_MIN) {
+		std::cout << "char: impossible" << std::endl;
+	}
+	else {
+		if (static_cast<char>(floating) >= 32 && static_cast<char>(floating) <= 126)
+			std::cout << "char: '" << static_cast<char>(floating) << "'" <<std::endl;
+		else
+			std::cout << "char:  Non displayable" << std::endl;
+	}
+	if (static_cast<int>(floating) == INT_MIN) {
+		long long_int = std::strtol(orign.c_str(), NULL, 10);
+		if (long_int < INT_MIN || long_int > INT_MAX)
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(floating) << std::endl;
+	}
+	else
+		std::cout << "int: " << static_cast<int>(floating) << std::endl;
+	std::cout << "float: " << floating << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(floating) << std::endl;
+	return false;
+}
 
-	std::cout << "is double\n";
-	std::istringstream(orign) >> double_precision;
+bool	convert_double(std::string & orign) {
+	// std::cout << "is double\n";
+	errno = 0;
+	double	double_precision = std::strtod(orign.c_str(), NULL);
+	if (errno == ERANGE) {
+		std::cerr << "Double overflow" << std::endl;
+		return true;
+	}
+	if (double_precision > CHAR_MAX || double_precision < CHAR_MIN) {
+		std::cout << "char: impossible" << std::endl;
+	}
+	else {
+		if (static_cast<char>(double_precision) >= 32 && static_cast<char>(double_precision) <= 126)
+			std::cout << "char: '" << static_cast<char>(double_precision) << "'" <<std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	if (static_cast<int>(double_precision) == INT_MIN) {
+		long long_int = std::strtol(orign.c_str(), NULL, 10);
+		if (long_int < INT_MIN || long_int > INT_MAX)
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(double_precision) << std::endl;
+	}
+	else
+		std::cout << "int: " << static_cast<int>(double_precision) << std::endl;
+	std::cout << "float: " << static_cast<double>(double_precision) << "f" << std::endl;
+	std::cout << "double: " << double_precision << std::endl;
+	return false;
 }
