@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:24:19 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 02:36:17 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/12 02:45:14 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,7 @@ bool	convert_int(std::string & orign) {
 bool	convert_float(std::string & orign) {
 	errno = 0;
 	float	floating = std::strtof(orign.c_str(), NULL);
-	if (floating <= std::numeric_limits<float>::min() && floating > 0) {
-		std::cerr << "Float underflow" << std::endl;
-		return true;
-	}
-	else if (errno == ERANGE) {
+	if (errno == ERANGE) {
 		std::cerr << "Float overflow" << std::endl;
 		return true;
 	}
