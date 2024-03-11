@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:24:19 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 02:21:49 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/12 02:36:17 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ bool	convert_double(std::string & orign);
 ScalarConverter::ScalarConverter() {}
 
 t_type	check_type(std::string & tar) {
-	size_t	len = tar.length();
-	size_t	i = 0;
+	size_t			len = tar.length();
+	unsigned int	dot_idx = 0;
+	size_t			i = 0;
 	if (tar.at(i) == '-')
 		i++;
 	for (; i < len && std::isdigit(tar[i]); i++);
@@ -30,11 +31,12 @@ t_type	check_type(std::string & tar) {
 		return INT;
 	}
 	if (tar[i] == '.') {
-		for (i++; i < len && std::isdigit(tar[i]); i++);
+		dot_idx = i++;
+		for (; i < len && std::isdigit(tar[i]); i++);
 	}
 	if (i == len)
 		return DOUBLE;
-	if (tar[i] == 'f' && tar[i - 1] != '.')
+	if (tar[i] == 'f' && tar[i - 1] != '.' && dot_idx != 0)
 		return FLOAT;
 	if (tar.at(0) == '\'' && tar.at(len - 1) == '\'') {
 		if (len != 3)
@@ -74,7 +76,6 @@ bool	ScalarConverter::convert(std::string & orign) {
 }
 
 bool	convert_char(std::string & orign) {
-	// std::cout << "is char\n";
 	char character = orign[1];
 	std::cout << "char: '" << character << "'" <<std::endl;
 	std::cout << "int: " << static_cast<int>(character) << std::endl;
@@ -84,9 +85,7 @@ bool	convert_char(std::string & orign) {
 }
 
 bool	convert_int(std::string & orign) {
-	// std::cout << "is int\n";
 	long	value = std::strtol(orign.c_str(), NULL, 10);
-	// std::cout << "long: " << value << std::endl;
 	if (value > INT_MAX || value < INT_MIN) {
 		std::cerr << "Int overflow" << std::endl;
 		return true;
@@ -114,10 +113,9 @@ bool	convert_int(std::string & orign) {
 }
 
 bool	convert_float(std::string & orign) {
-	// std::cout << "is float\n";
 	errno = 0;
 	float	floating = std::strtof(orign.c_str(), NULL);
-	if (floating <= std::numeric_limits<float>::min()) {
+	if (floating <= std::numeric_limits<float>::min() && floating > 0) {
 		std::cerr << "Float underflow" << std::endl;
 		return true;
 	}
@@ -149,7 +147,6 @@ bool	convert_float(std::string & orign) {
 }
 
 bool	convert_double(std::string & orign) {
-	// std::cout << "is double\n";
 	errno = 0;
 	double	double_precision = std::strtod(orign.c_str(), NULL);
 	if (errno == ERANGE) {
