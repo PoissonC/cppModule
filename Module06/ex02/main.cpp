@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 23:21:24 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 23:35:17 by ychen2           ###   ########.fr       */
+/*   Created: 2024/03/03 23:24:14 by ychen2            #+#    #+#             */
+/*   Updated: 2024/03/13 00:00:06 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include "Funcs.hpp"
+#include <ctime>   // For std::time(), to seed the random number generator
+#include <cstdlib> // For std::rand() and std::srand()
 
-#include <iostream>
-#include <string>
-#include <cerrno>
-#include <climits>
-#include <limits>
-#include <cstdlib>
+int main() {
+	//seed the random value lists
+	std::srand(std::time(NULL));
 
-typedef enum e_type {
-	ERR = 0,
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE
-} t_type;
-
-class ScalarConverter {
-	private:
-		ScalarConverter();
-	public:
-		static bool		convert(std::string & orign);
-};
+	Base *ptr = generate();
+	identify(ptr);
+	identify(*ptr);
+	delete ptr;
+	return (0);
+}

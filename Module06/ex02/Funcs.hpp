@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Funcs.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/03 23:21:24 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 23:35:17 by ychen2           ###   ########.fr       */
+/*   Created: 2024/03/12 23:39:40 by ychen2            #+#    #+#             */
+/*   Updated: 2024/03/12 23:59:35 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 #include <iostream>
-#include <string>
-#include <cerrno>
-#include <climits>
-#include <limits>
-#include <cstdlib>
 
-typedef enum e_type {
-	ERR = 0,
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE
-} t_type;
-
-class ScalarConverter {
-	private:
-		ScalarConverter();
-	public:
-		static bool		convert(std::string & orign);
-};
+Base*	generate(void);
+void	identify(Base* p);
+void	identify(Base& p);

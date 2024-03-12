@@ -6,11 +6,14 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:24:14 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 23:15:06 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/12 23:30:52 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
+#include <iostream>
+#include <stdint.h>
+
 
 int main() {
 	Data data[2];
