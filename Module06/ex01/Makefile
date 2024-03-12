@@ -3,11 +3,11 @@ CC 			= c++
 CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 
 #Sources and objects
-SRC = ScalarConverter.cpp
+SRC = Serializer.cpp
 OBJ = $(SRC:.cpp=.o)
 HDR = $(SRC:.cpp=.hpp)
 
-NAME = convert
+NAME = serializer
 
 all: $(NAME)
 
