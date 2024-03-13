@@ -1,13 +1,25 @@
 #include <iostream>
-#include <limits> // For std::numeric_limits
+#include <map>
 
-int main() {
-    float smallestNormalizedFloat = std::numeric_limits<float>::min();
-    std::cout << "Smallest normalized positive float: " << smallestNormalizedFloat << std::endl;
+int main ()
+{
+  std::map<char,int> mymap;
+  std::map<char,int>::iterator itlow,itup;
 
-    // Example usage
-    float underflowTest = smallestNormalizedFloat / 2.0f; // This operation may result in a denormalized number or underflow
-    std::cout << "Result of division by 2: " << underflowTest << std::endl;
-    
-    return 0;
+  mymap['a']=20;
+  mymap['c']=60;
+  mymap['d']=80;
+  mymap['e']=100;
+
+  itlow=mymap.lower_bound ('b');  // itlow points to b
+  std::cout << itlow->first << '\n';
+  itup=mymap.upper_bound ('d');   // itup points to e (not d!)
+
+  mymap.erase(itlow,itup);        // erases [itlow,itup)
+
+  // print content:
+  for (std::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
+    std::cout << it->first << " => " << it->second << '\n';
+
+  return 0;
 }
