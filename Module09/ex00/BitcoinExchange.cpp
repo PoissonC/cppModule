@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 22:57:57 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/14 05:48:13 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/14 23:38:38 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ double	parse_line(std::string & line) {
 		throw Parse_Value_Fail_Negative();
 	return ret;
 }
-void	check_date(std::string date) {
+
+void	check_date_format(std::string date) {
 	if (date[4] != '-' || date[7] != '-')
 		throw Bad_Input();
 	for (size_t i = 0; i <= 3; i++)
@@ -81,5 +82,21 @@ void	check_date(std::string date) {
 	for (size_t i = 8; i <= 9; i++)
 		if (!std::isdigit(date[i]))
 			throw Bad_Input();
-	// add the check logic of year month date 
+}
+
+static bool isLeapYear(int year) {
+	return (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0);
+}
+
+void	check_date(std::string date) {
+	check_date_format(date);
+	long	y = std::strtol(date.substr(0, 4).c_str(), NULL, 10);
+	long	m = std::strtol(date.substr(5, 2).c_str(), NULL, 10);
+	long	d = std::strtol(date.substr(8, 2).c_str(), NULL, 10);
+	if (m < 1 || m > 12 || y < 0 || d < 1)
+		throw Bad_Input();
+	int daysInMonth[] = 
+	{31, 28 + isLeapYear(y), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (d > daysInMonth[m - 1])
+		throw Bad_Input();
 }

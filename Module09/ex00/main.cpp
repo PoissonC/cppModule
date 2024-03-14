@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:12:06 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/14 05:49:11 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/14 19:40:38 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <map>
+#include <algorithm>
+#include <exception>
 
 int main(int ac, char **av) {
 	if (ac > 2) {
@@ -44,7 +47,17 @@ int main(int ac, char **av) {
 	while (std::getline(inFile, line)) {
 		try {
 			double	val = parse_line(line);
-			//use dict.lower_bound - 1
+			std::string	date = line.substr(0, 10);
+			std::map<std::string, double>::iterator it = dict.lower_bound(date);
+			if (it == dict.begin() && it->first != date) {
+				std::cerr << "No data avaiable for the input date." << std::endl;
+				continue;
+			}
+			else {
+				if (it->first != date)
+					--it;
+				std::cout << date << " => " << val << " = " << val * it->second << std::endl;
+			}
 		}
 		catch(std::exception & e) {
 			if (dynamic_cast<Bad_Input*>(&e))

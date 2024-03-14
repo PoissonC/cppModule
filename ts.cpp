@@ -11,7 +11,7 @@ int main ()
   mymap['d']=80;
   mymap['e']=100;
 
-  itlow=mymap.lower_bound ('b');  // itlow points to b
+  itlow=mymap.lower_bound ('a');  // itlow points to b
   std::cout << itlow->first << '\n';
   itup=mymap.upper_bound ('d');   // itup points to e (not d!)
 
