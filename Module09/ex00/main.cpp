@@ -6,7 +6,7 @@
 /*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:12:06 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/14 19:40:38 by yu               ###   ########.fr       */
+/*   Updated: 2024/03/14 23:52:53 by yu               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 int main(int ac, char **av) {
 	if (ac > 2) {
-		std::cout << "Error: Wrong number of argument." << std::endl;
+		std::cerr << "Error: Wrong number of argument." << std::endl;
 		return 1;	
 	}
 
