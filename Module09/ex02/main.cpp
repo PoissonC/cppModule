@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yu <yu@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:12:06 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/15 00:24:29 by yu               ###   ########.fr       */
+/*   Updated: 2024/03/15 20:08:25 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 #include <exception>
 
 int main(int ac, char **av) {
-	if (ac < 2) {
-		std::cerr << "Error: Wrong number of argument." << std::endl;
+	if (ac != 2) {
+		std::cout << "Error: Wrong number of argument." << std::endl;
 		return 1;	
 	}
 
 	try {
+		input_check(av + 1)
+		merge_insertion_sort_vector(av + 1);
+		merge_insertion_sort_deque(av + 1);
 	}
 	catch (std::exception &e) {
 		std::cout << "Error" << std::endl;
