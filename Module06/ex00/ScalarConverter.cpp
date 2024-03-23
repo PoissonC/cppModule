@@ -6,21 +6,21 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 23:24:19 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/12 02:45:14 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/23 19:26:02 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-t_type	check_type(std::string & tar);
-bool	convert_char(std::string & orign);
-bool	convert_int(std::string & orign);
-bool	convert_float(std::string & orign);
-bool	convert_double(std::string & orign);
+static t_type	check_type(std::string & tar);
+static bool	convert_char(std::string & orign);
+static bool	convert_int(std::string & orign);
+static bool	convert_float(std::string & orign);
+static bool	convert_double(std::string & orign);
 
 ScalarConverter::ScalarConverter() {}
 
-t_type	check_type(std::string & tar) {
+static t_type	check_type(std::string & tar) {
 	size_t			len = tar.length();
 	unsigned int	dot_idx = 0;
 	size_t			i = 0;
@@ -75,7 +75,7 @@ bool	ScalarConverter::convert(std::string & orign) {
 		return convert_double(orign);
 }
 
-bool	convert_char(std::string & orign) {
+static bool	convert_char(std::string & orign) {
 	char character = orign[1];
 	std::cout << "char: '" << character << "'" <<std::endl;
 	std::cout << "int: " << static_cast<int>(character) << std::endl;
@@ -84,7 +84,7 @@ bool	convert_char(std::string & orign) {
 	return false;
 }
 
-bool	convert_int(std::string & orign) {
+static bool	convert_int(std::string & orign) {
 	long	value = std::strtol(orign.c_str(), NULL, 10);
 	if (value > INT_MAX || value < INT_MIN) {
 		std::cerr << "Int overflow" << std::endl;
@@ -112,7 +112,7 @@ bool	convert_int(std::string & orign) {
 	return false;
 }
 
-bool	convert_float(std::string & orign) {
+static bool	convert_float(std::string & orign) {
 	errno = 0;
 	float	floating = std::strtof(orign.c_str(), NULL);
 	if (errno == ERANGE) {
@@ -133,7 +133,7 @@ bool	convert_float(std::string & orign) {
 		if (long_int < INT_MIN || long_int > INT_MAX)
 			std::cout << "int: impossible" << std::endl;
 		else
-			std::cout << "int: " << static_cast<int>(floating) << std::endl;
+			std::cout << "int: " << long_int << std::endl; // the static cast of 2147483647.~ is not the same with double
 	}
 	else
 		std::cout << "int: " << static_cast<int>(floating) << std::endl;
@@ -142,7 +142,7 @@ bool	convert_float(std::string & orign) {
 	return false;
 }
 
-bool	convert_double(std::string & orign) {
+static bool	convert_double(std::string & orign) {
 	errno = 0;
 	double	double_precision = std::strtod(orign.c_str(), NULL);
 	if (errno == ERANGE) {
