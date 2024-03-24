@@ -1,25 +1,38 @@
+#include <list>
 #include <iostream>
-#include <map>
 
-int main ()
-{
-  std::map<char,int> mymap;
-  std::map<char,int>::iterator itlow,itup;
+template<typename T>
+bool list_binary_search(const std::list<T>& lst, const T& value) {
+    if (lst.empty()) return false;
 
-  mymap['a']=20;
-  mymap['c']=60;
-  mymap['d']=80;
-  mymap['e']=100;
+    auto it = lst.begin();
+    auto steps = distance(it, lst.end());
 
-  itlow=mymap.lower_bound ('a');  // itlow points to b
-  std::cout << itlow->first << '\n';
-  itup=mymap.upper_bound ('d');   // itup points to e (not d!)
+    while (steps > 0) {
+        auto mid = it;
+        auto step = steps / 2;
+        advance(mid, step);
+        if (*mid == value) {
+            return true;
+        } else if (*mid < value) {
+            it = ++mid;
+            steps -= step + 1;
+        } else {
+            steps = step;
+        }
+    }
 
-  mymap.erase(itlow,itup);        // erases [itlow,itup)
+    return false;
+}
 
-  // print content:
-  for (std::map<char,int>::iterator it=mymap.begin(); it!=mymap.end(); ++it)
-    std::cout << it->first << " => " << it->second << '\n';
+int main() {
+    std::list<int> lst = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-  return 0;
+    if (list_binary_search(lst, 11)) {
+        std::cout << "Found the value!" << std::endl;
+    } else {
+        std::cout << "Value not found." << std::endl;
+    }
+
+    return 0;
 }

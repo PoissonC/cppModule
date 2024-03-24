@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 00:22:03 by yu                #+#    #+#             */
-/*   Updated: 2024/03/23 20:32:06 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/03/24 18:44:43 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,12 @@ static int	binary_search_deque(std::deque<int> & deq, int tar, int end) {
 		end = size - 1;
 	int	start = 0;
 	int	mid = start + (end - start) / 2;
+	// std::cout << "size: " << size - 1 << " end: " << end << '\n'; // this line make sure the comparison is restricted to a smaller size
 	if (tar <= deq[start])
 		return -1;
 	if (tar >= deq[end])
 		return end + 1;
-	while (start <= end && mid < size)
+	while (start <= end && mid + 1 < size)
 	{
 		if (deq[mid + 1] >= tar && deq[mid] <= tar)
 			return mid + 1;
@@ -115,17 +116,16 @@ static int	binary_search_deque(std::deque<int> & deq, int tar, int end) {
 			start = mid + 1;
 		mid = start + (end - start) / 2;
 	}
-	std::cout << "start: " << start << " mid: " << mid << " end: " << end << '\n';
 	return end + 1;
 }
 
 static void	insertion_sort_deque(std::deque<int> & deq, std::deque<t_pair> & unsorted) {
 	int	size = unsorted.size();
-	for (size_t i = 0; i < deq.size(); i++)
-		std::cout << deq[i] << ' ';
-	std::cout << '\n';
+	// for (size_t i = 0; i < deq.size(); i++)
+	// 	std::cout << deq[i] << ' ';
+	// std::cout << '\n';
 	for (int i = 0; i < size; i++) {
-		std::cout << "i: " << i << ", tar: " << unsorted[i].first << ", end: " << unsorted[i].second << '\n';
+		// std::cout << "i: " << i << ", tar: " << unsorted[i].first << ", end: " << unsorted[i].second << '\n';
 		int	tar_idx = binary_search_deque(deq, unsorted[i].first, unsorted[i].second);
 		if (tar_idx == -1) {
 			deq.push_front(unsorted[i].first);
@@ -175,7 +175,10 @@ static void	sort_deque(std::deque<int> & deq) {
 	for (unsigned long i = 0; i < pair_size; i++) {
 		unsorted[i].second = cur_pow * 2 - 1;
 		if (i < 2) {
-			unsorted[i].first = pairs[1 - i].second;
+			if (pair_size < 2)
+				unsorted[i].first = pairs[0].second;
+			else
+				unsorted[i].first = pairs[1 - i].second;
 			unsorted[i].second = 3;
 		}
 		else if (accu + cur_pow - last_group < pair_size) {
@@ -193,7 +196,7 @@ static void	sort_deque(std::deque<int> & deq) {
 		// std::cout << i << ' ' << unsorted[i].first << ' ' << unsorted[i].second << '\n'; // this line checkes if the order is correct
 	}
 	if (extra != -1)
-		unsorted.push_back((t_pair){extra, pair_size - 1});
+		unsorted.push_back((t_pair){extra, cur_pow * 2});
 	// re-orgnize ends
 
 	insertion_sort_deque(deq, unsorted);
@@ -212,10 +215,98 @@ long	merge_insertion_sort_deque(std::deque<int> & deq) {
 
 //	list part
 
+bool pair_cmp (t_pair first, t_pair second) {
+	return ( first.first < second.first );
+}
+
+void split_list(std::list<t_pair> & lst, std::list<t_pair> & lst1, std::list<t_pair> & lst2) {
+    // An iterator to the middle of the list
+    std::list<t_pair>::iterator it = lst.begin();
+    std::advance(it, lst.size() / 2);
+
+    // Split the list into lst1 and lst2
+    lst1.splice(lst1.begin(), lst, lst.begin(), it);
+    lst2.splice(lst2.begin(), lst);
+}
+
+static void	merge_sort_list(std::list<t_pair> & pairs) {
+	if (pairs.size() <= 1)
+		return;
+	std::list<t_pair> lst1, lst2;
+    split_list(pairs, lst1, lst2);
+	merge_sort_list(lst1);
+	merge_sort_list(lst2);
+	lst1.merge(lst2, pair_cmp);
+	pairs.swap(lst1);
+}
+
+static void insertion_sort_list(std::list<int> & lst, std::list<t_pair> & pairs) {
+	while (!pairs.empty()) {
+		std::list<int>::iterator	lst_it = lst.begin();
+		int							size = lst.size();
+		for (int i = 0; i < size; i++, lst_it++) {
+			if (*lst_it >= (*pairs.begin()).second) {
+				lst.insert(lst_it, (*pairs.begin()).second);
+				break;
+			}
+		}
+		pairs.pop_front();
+	}
+}
+
+static void	sort_list(std::list<int> & lst) {
+	// pair up
+	int	extra = -1; //since the input values are all positive
+	std::list<t_pair> pairs;
+	int	orig_size = lst.size();
+	if (orig_size % 2 != 0) { // the odd number input, the last number remained unpaired
+		extra = *(--lst.end());
+	}
+	unsigned long	pair_size = orig_size / 2; // will be used later
+	std::list<int>::iterator it = lst.begin();
+	for (unsigned long i = 0; i < pair_size; i++, it++) {
+		if (*it >= *(++it)) {
+			t_pair	tmp;
+			tmp.first = *(--it);
+			tmp.second = *(++it);
+			pairs.push_back(tmp);
+		}
+		else {
+			t_pair	tmp;
+			tmp.first = *(it);
+			tmp.second = *(--it);
+			pairs.push_back(tmp);
+			it++;
+		}
+	}
+	// pair up ends
+
+	merge_sort_list(pairs);
+
+	// no need to re-organize pairs since we can't use [] for list
+	// but we need to put pairs back to list
+	lst.clear();
+	lst.push_back((*pairs.begin()).second);
+	for (std::list<t_pair>::iterator it = pairs.begin(); it != pairs.end(); it++)
+		lst.push_back((*it).first);
+	if (extra != -1)
+		(*pairs.begin()).second = extra;
+	else
+		pairs.pop_front();
+	// re-organiz ends
+
+	insertion_sort_list(lst, pairs);
+
+	// for (std::list<int>::iterator it = lst.begin(); it != lst.end(); it++) {
+	// 	std::cout << (*it) << ' ';
+	// }
+	// std::cout << '\n';
+}
+
 long	merge_insertion_sort_list(std::list<int> & lst) {
 	struct timespec start, end;
 	clock_gettime(CLOCK_MONOTONIC, &start);
-	(void)lst;
+	sort_list(lst);
 	clock_gettime(CLOCK_MONOTONIC, &end);
 	return (get_time(&start, &end));
 }
