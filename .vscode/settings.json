@@ -79,6 +79,7 @@
 		"*.tpp": "c",
 		"list": "cpp",
 		"map": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"forward_list": "cpp"
 	}
 }
