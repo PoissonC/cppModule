@@ -6,12 +6,14 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 21:58:44 by ychen2            #+#    #+#             */
-/*   Updated: 2024/04/26 17:12:43 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:35:47 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <exception>
 #include <algorithm>
-#include "easyfind.tpp"
+
+template <typename T>
+typename T::iterator easyfind(T& container, int value) {
+	return std::find(container.begin(), container.end(), value);
+}

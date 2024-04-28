@@ -5,7 +5,7 @@ CFLAGS 		= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address
 #Sources and objects
 SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
-HDR = easyfind.hpp easyfind.tpp
+HDR = easyfind.hpp
 
 NAME = easyfind
 
