@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:32:34 by ychen2            #+#    #+#             */
-/*   Updated: 2024/03/07 23:04:02 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:54:23 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <exception>
 #include <vector>
 #include <algorithm>
-
+#include <iostream>
 class Span {
 	public:
 		// OCF
@@ -26,6 +26,19 @@ class Span {
 
 		// Member funcs
 		void	addNumber(int new_num);
+		template <typename Iter>
+		void	addNumberChunck(Iter new_nums_begin, Iter new_nums_end) {
+			unsigned int ct = 0;
+			for (Iter it = new_nums_begin; it != new_nums_end; it++) {
+				ct++;
+			}
+			std::cout << ct << std::endl;
+			if (_vec.size() + ct > this->_number)
+				throw AlreadyFull();
+			for (Iter it = new_nums_begin; it != new_nums_end; it++) {
+				_vec.push_back(*it);
+			}
+		}
 		int		shortestSpan();
 		int		longestSpan();
 
