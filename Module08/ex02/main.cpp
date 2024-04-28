@@ -6,7 +6,7 @@
 /*   By: ychen2 <ychen2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 22:12:06 by ychen2            #+#    #+#             */
-/*   Updated: 2024/04/26 19:25:49 by ychen2           ###   ########.fr       */
+/*   Updated: 2024/04/28 15:59:11 by ychen2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int main() {
 		++it;
 	}
 	std::cout << std::endl;
+	// the following line is the reason that we use deque as the default container choice of iterator
 	std::stack<int> s(mstack);
+	// or use this instead
+	// std::stack<int, std::vector<int> > s(mstack);
 
 	std::cout << "List:\n";
 	std::list<int> lst;
@@ -51,8 +54,8 @@ int main() {
 	lst.push_back(737);
 	//[...]
 	lst.push_back(0);
-	MutantStack<int>::iterator it_lst = mstack.begin();
-	MutantStack<int>::iterator ite_lst = mstack.end();
+	std::list<int>::iterator it_lst = lst.begin();
+	std::list<int>::iterator ite_lst = lst.end();
 	++it_lst;
 	--it_lst;	
 	while (it_lst != ite_lst)
@@ -61,5 +64,22 @@ int main() {
 		++it_lst;
 	}
 	std::cout << std::endl;
+
+
+	// for OCF tests
+	std::cout << "OCF tests:\n";
+	std::cout << "Copy constructor tests:\n";
+	MutantStack<int> copy_mstack(mstack);
+	for (MutantStack<int>::iterator it = copy_mstack.begin(); it != copy_mstack.end(); it++) {
+		std::cout << *it << " ";
+	}
+	std::cout << "\nCopy assignment tests:\n";
+	MutantStack<int> copy2_mstack;
+	copy2_mstack = mstack;
+	for (MutantStack<int>::iterator it = copy2_mstack.begin(); it != copy2_mstack.end(); it++) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
+	
 	return 0;
 }

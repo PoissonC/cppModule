@@ -10,12 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+
 template<typename T, typename Container>
 MutantStack<T, Container>::MutantStack() : std::stack<T, Container>() {
+	std::cout << "Default constructor of MutantStack is called.\n";
 }
 
 template<typename T, typename Container>
-MutantStack<T, Container>::MutantStack(const Container& cont) : std::stack<T, Container>(cont) {
+MutantStack<T, Container>::MutantStack(const MutantStack& cont) : std::stack<T, Container>(cont) {
+	std::cout << "Copy constructor of MutantStack is called.\n";
+}
+
+template<typename T, typename Container>
+MutantStack<T, Container>& MutantStack<T, Container>::operator=(const MutantStack<T, Container> & other) {
+	std::cout << "Copy assignment operator of MutantStack is called.\n";
+	if (this != &other) { 
+		std::stack<T, Container>::operator=(other);
+	}
+	return *this;
+}
+
+template<typename T, typename Container>
+MutantStack<T, Container>::~MutantStack() {
+	std::cout << "Default destructor of MutantStack is called.\n";
 }
 
 template<typename T, typename Container>

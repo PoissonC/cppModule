@@ -13,6 +13,7 @@
 #pragma once
 
 #include <stack>
+// #include <vector> for tests
 
 template<typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
@@ -20,9 +21,12 @@ public:
 	typedef typename Container::iterator		iterator;
 	typedef typename Container::const_iterator	const_iterator;
 
-	// Constructors
+	// OCF
 	MutantStack();
-	explicit MutantStack(const Container& cont);
+	MutantStack(const MutantStack& cont);
+	MutantStack<T, Container>&	operator=(const MutantStack<T, Container> & other);
+	~MutantStack();
+
 
 	iterator begin();
 	iterator end();
